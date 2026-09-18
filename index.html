@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VENO // Cyber Security Lab & E-Commerce Website</title>
+    <title>CYBER SECURITY HARDCORE LAB // NAVIGATION</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -26,178 +26,204 @@
 </head>
 <body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
 
-    <!-- Header / Lab Control -->
-    <header class="flex flex-col md:flex-row justify-between items-center border-b border-green-500 pb-4 mb-6">
+    <!-- Global Navigation Header -->
+    <header class="flex flex-col md:flex-row justify-between items-center border-b border-green-500 pb-4 mb-6 gap-4">
         <div>
             <h1 class="text-xl md:text-2xl font-bold tracking-wider glow-text uppercase">
-                // LAB CONTROL [STRICT LAB v5.0]
+                // HARDCORE LAB [NAVIGATION HUB]
             </h1>
-            <p class="text-xs text-green-400/70">Keine UI-Code-Eingaben. Externe Angriffe via PowerShell / Dateien.</p>
+            <p class="text-xs text-green-400/70">Wechsle nahtlos zwischen allen Missionen.</p>
         </div>
-        <div class="flex items-center gap-3 mt-2 md:mt-0">
-            <div class="text-xs text-yellow-400 border border-yellow-800 px-3 py-1 bg-black font-bold">
-                TOKEN ROTATION: 60s
-            </div>
-            <button onclick="toggleView('dashboard')" class="text-xs border border-green-600 px-3 py-1 bg-black hover:bg-green-500 hover:text-black transition uppercase font-bold">
-                Dashboard
+        <div class="flex flex-wrap gap-2 text-xs">
+            <button onclick="switchView('dashboard')" class="border border-green-600 px-3 py-1.5 bg-black hover:bg-green-500 hover:text-black transition uppercase font-bold">
+                🏠 Dashboard
             </button>
-            <button onclick="toggleView('shop')" class="text-xs border border-green-600 px-3 py-1 bg-black hover:bg-green-500 hover:text-black transition uppercase font-bold text-yellow-400">
-                🌐 VENO E-Commerce Website öffnen
+            <button onclick="switchView('mission1')" class="border border-green-600 px-3 py-1.5 bg-black hover:bg-green-500 hover:text-black transition uppercase font-bold">
+                01: Login
+            </button>
+            <button onclick="switchView('mission2')" class="border border-yellow-600 px-3 py-1.5 bg-black hover:bg-yellow-500 hover:text-black transition uppercase font-bold text-yellow-400">
+                02: VENO Shop
+            </button>
+            <button onclick="switchView('mission3')" class="border border-green-600 px-3 py-1.5 bg-black hover:bg-green-500 hover:text-black transition uppercase font-bold">
+                03: Smartphone
             </button>
         </div>
     </header>
 
-    <!-- Main Container (Switchable between Dashboard & E-Commerce Website) -->
-    <main id="main-view" class="max-w-6xl mx-auto w-full flex-grow space-y-6">
+    <!-- Main Dynamic Container -->
+    <main class="max-w-6xl mx-auto w-full flex-grow space-y-6">
         
-        <!-- Standard Dashboard View -->
+        <!-- DASHBOARD VIEW -->
         <div id="view-dashboard" class="space-y-6">
             <div class="terminal-bg p-6 rounded glow-box">
-                <h2 class="text-xl text-green-400 mb-2 font-bold">[ AUFGABEN-ÜBERSICHT ]</h2>
-                <p class="text-green-300 text-sm leading-relaxed mb-4">
-                    Klicke oben rechts auf den gelben Button <strong>"VENO E-Commerce Website öffnen"</strong>, um direkt auf die vollwertige Online-Shop-Webseite von Aufgabe 2 zu gelangen.
+                <h2 class="text-xl text-green-400 mb-2 font-bold">[ WÄHLE DEINE MISSION ]</h2>
+                <p class="text-green-300 text-sm leading-relaxed mb-6">
+                    Wähle unten eine Aufgabe aus oder nutze die Leiste oben, um direkt zu den jeweiligen Trainingsumgebungen zu springen.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="border border-green-900 p-4 bg-black rounded">
-                        <div class="text-xs text-green-500">AUFGABE 01</div>
-                        <h4 class="font-bold text-green-300 my-1">Strict Character Login</h4>
-                        <p class="text-xs text-green-400/70">Zeichenweises Feedback bei der Eingabe gegen den 60s-Rotator.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border border-green-900 p-5 bg-black rounded flex flex-col justify-between hover:border-green-500 transition cursor-pointer" onclick="switchView('mission1')">
+                        <div>
+                            <div class="text-xs text-green-500 mb-1">MISSION 01</div>
+                            <h4 class="font-bold text-green-300 text-lg mb-2">Strict Login</h4>
+                            <p class="text-xs text-green-400/70">Zeichenweises Feedback gegen den alle 60 Sek. rotierenden Key.</p>
+                        </div>
+                        <div class="mt-4 text-xs text-green-400 font-bold underline">Öffnen &rarr;</div>
                     </div>
-                    <div class="border border-green-900 p-4 bg-black rounded cursor-pointer hover:border-green-500 transition" onclick="toggleView('shop')">
-                        <div class="text-xs text-yellow-400">AUFGABE 02 (HIER KLICKEN)</div>
-                        <h4 class="font-bold text-yellow-300 my-1">VENO E-Commerce Website</h4>
-                        <p class="text-xs text-green-400/70">Vollständiger Online-Shop für Pandora, Levis, Nike & Puma Produkte.</p>
-                    </div>
-                    <div class="border border-green-900 p-4 bg-black rounded">
-                        <div class="text-xs text-green-500">AUFGABE 03</div>
-                        <h4 class="font-bold text-green-300 my-1">Target Smartphone Lock</h4>
-                        <p class="text-xs text-green-400/70">Virtuelles Handy mit Touchscreen-Keypad und PIN-Rotation.</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Server Log -->
-            <div class="terminal-bg p-4 rounded glow-box">
-                <div class="text-xs text-green-400 font-bold mb-2">// BACKEND & API TRAFFIC LOG (PowerShell / Skripte)</div>
-                <div id="server-log" class="text-xs text-green-500 h-28 overflow-y-auto space-y-1 font-mono bg-zinc-950 p-3 rounded border border-zinc-900">
-                    [00:00:01] System initialisiert. Veno Webshop bereitgestellt.
+                    <div class="border border-yellow-900 p-5 bg-black rounded flex flex-col justify-between hover:border-yellow-500 transition cursor-pointer" onclick="switchView('mission2')">
+                        <div>
+                            <div class="text-xs text-yellow-500 mb-1">MISSION 02</div>
+                            <h4 class="font-bold text-yellow-300 text-lg mb-2">VENO E-Commerce Shop</h4>
+                            <p class="text-xs text-green-400/70">Vollständiger Webshop für Pandora, Levis, Nike & Puma. Angriffe via PowerShell.</p>
+                        </div>
+                        <div class="mt-4 text-xs text-yellow-400 font-bold underline">Website Öffnen &rarr;</div>
+                    </div>
+
+                    <div class="border border-green-900 p-5 bg-black rounded flex flex-col justify-between hover:border-green-500 transition cursor-pointer" onclick="switchView('mission3')">
+                        <div>
+                            <div class="text-xs text-green-500 mb-1">MISSION 03</div>
+                            <h4 class="font-bold text-green-300 text-lg mb-2">Target Smartphone</h4>
+                            <p class="text-xs text-green-400/70">Virtuelles Handy mit Touchscreen-Keypad und 60s PIN-Rotation.</p>
+                        </div>
+                        <div class="mt-4 text-xs text-green-400 font-bold underline">Öffnen &rarr;</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- E-Commerce Website View (Aufgabe 2) -->
-        <div id="view-shop" class="hidden space-y-6">
-            <!-- Echte Webshop Navbar -->
-            <nav class="bg-black border border-green-600 p-4 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <span class="text-xl font-extrabold text-green-400 tracking-wider">⚡ VENO STORE</span>
-                    <span class="text-[10px] bg-green-950 border border-green-700 px-2 py-0.5 rounded text-green-300">LIVE E-COMMERCE TARGET</span>
+        <!-- MISSION 1 VIEW -->
+        <div id="view-mission1" class="hidden space-y-4">
+            <div class="terminal-bg p-6 rounded glow-box max-w-xl mx-auto space-y-4">
+                <div class="flex justify-between items-center border-b border-green-800 pb-2">
+                    <h3 class="text-lg font-bold text-green-300">Mission 01: Strict Character Login</h3>
+                    <span class="text-xs text-red-400 font-bold">Rotations-Timer: <span id="m1-timer" class="text-yellow-400">60s</span></span>
                 </div>
-                <div class="flex items-center gap-4 text-xs">
-                    <span class="text-zinc-400">Marken: <strong class="text-green-300">Pandora | Levis | Nike | Puma</strong></span>
-                    <button onclick="openCartModal()" class="border border-green-500 px-3 py-1.5 bg-green-950/50 hover:bg-green-500 hover:text-black transition font-bold flex items-center gap-2 rounded">
-                        🛒 Warenkorb (<span id="cart-counter">0</span>)
-                    </button>
+                <p class="text-xs text-green-400/80">
+                    Jedes eingegebene Zeichen wird live gegen den aktuellen 60s-Rotator geprüft. Du siehst sofort, welche Positionen korrekt sind.
+                </p>
+                <div class="space-y-3">
+                    <div>
+                        <label class="text-xs text-green-400 block mb-1">Benutzername</label>
+                        <input type="text" id="m1-user" oninput="evalMission1()" placeholder="Tippe User..." class="w-full bg-zinc-950 border border-green-500 p-2.5 text-green-300 text-sm outline-none rounded font-mono">
+                        <div id="m1-user-fb" class="text-xs mt-1 text-yellow-400 font-mono">Feedback: _ _ _ _</div>
+                    </div>
+                    <div>
+                        <label class="text-xs text-green-400 block mb-1">Passwort</label>
+                        <input type="password" id="m1-pass" oninput="evalMission1()" placeholder="Tippe Passwort..." class="w-full bg-zinc-950 border border-green-500 p-2.5 text-green-300 text-sm outline-none rounded font-mono">
+                        <div id="m1-pass-fb" class="text-xs mt-1 text-yellow-400 font-mono">Feedback: _ _ _ _ _ _</div>
+                    </div>
+                    <div id="m1-success" class="hidden p-3 bg-green-950 border border-green-400 text-green-300 font-bold text-xs text-center">
+                        ZUGRIFF ERFOLGREICH GEKNACKT!
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- MISSION 2 VIEW (VENO E-COMMERCE WEBSITE) -->
+        <div id="view-mission2" class="hidden space-y-6">
+            <nav class="bg-black border border-green-600 p-4 rounded-xl flex justify-between items-center">
+                <div class="font-extrabold text-green-300 text-lg">⚡ VENO STORE [LIVE TARGET]</div>
+                <button onclick="openCart()" class="border border-green-500 px-3 py-1 bg-green-950 hover:bg-green-500 hover:text-black transition text-xs font-bold rounded">
+                    🛒 Warenkorb (<span id="shop-cart-count">0</span>)
+                </button>
             </nav>
 
-            <!-- Hero Banner -->
-            <div class="bg-gradient-to-r from-zinc-950 via-black to-zinc-950 border border-green-800 p-8 rounded-2xl text-center space-y-3 glow-box">
-                <h2 class="text-3xl font-extrabold text-green-300 tracking-wide">PANDORA // LEVIS // NIKE // PUMA</h2>
-                <p class="text-sm text-green-400/80 max-w-2xl mx-auto">
-                    Exklusive Premium-Reseller-Kollektion. Entdecke Schmuck, Denim und Sneaker. Führe deine Angriffe über deine externen PowerShell-Skripte und Tools aus.
+            <div class="bg-black border border-green-800 p-6 rounded-xl text-center space-y-2 glow-box">
+                <h3 class="text-2xl font-bold text-green-300">PANDORA // LEVIS // NIKE // PUMA</h3>
+                <p class="text-xs text-green-400/80 max-w-xl mx-auto">
+                    Echte E-Commerce-Webseite. Keine Formulare oder Code-Eingaben im UI – führe deine Angriffe über deine PowerShell-Skripte im Hintergrund aus.
                 </p>
             </div>
 
-            <!-- Produktkatalog Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Produkt 1 -->
-                <div class="terminal-bg border border-green-800 rounded-xl p-4 flex flex-col justify-between hover:border-green-400 transition">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="terminal-bg border border-green-800 p-4 rounded flex flex-col justify-between">
                     <div>
-                        <div class="text-[10px] text-green-500 font-bold uppercase mb-1">Pandora // Jewelry</div>
-                        <h3 class="font-bold text-green-200 text-base mb-2">Silver Charm Bracelet</h3>
-                        <p class="text-xs text-zinc-400 mb-4">Hochwertiges Armband aus Sterlingsilber.</p>
+                        <div class="text-[10px] text-green-500 font-bold mb-1">PANDORA // JEWELRY</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">Silver Charm Bracelet</h4>
+                        <div class="text-sm font-bold text-yellow-400 mb-2">€ 119.99</div>
                     </div>
-                    <div>
-                        <div class="text-base font-bold text-yellow-400 mb-3">€ 119.99</div>
-                        <button onclick="addProductToCart('Silver Charm Bracelet', 119.99)" class="w-full border border-green-600 py-2 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
-                            In den Warenkorb
-                        </button>
-                    </div>
+                    <button onclick="addToShop('Silver Charm Bracelet', 119.99)" class="border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
+                        Kaufen
+                    </button>
                 </div>
 
-                <!-- Produkt 2 -->
-                <div class="terminal-bg border border-green-800 rounded-xl p-4 flex flex-col justify-between hover:border-green-400 transition">
+                <div class="terminal-bg border border-green-800 p-4 rounded flex flex-col justify-between">
                     <div>
-                        <div class="text-[10px] text-green-500 font-bold uppercase mb-1">Pandora // Jewelry</div>
-                        <h3 class="font-bold text-green-200 text-base mb-2">Gold Signature Ring</h3>
-                        <p class="text-xs text-zinc-400 mb-4">Vergoldeter Statement-Ring mit Zirkonia.</p>
+                        <div class="text-[10px] text-green-500 font-bold mb-1">LEVIS // APPAREL</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">Vintage Denim Jacket</h4>
+                        <div class="text-sm font-bold text-yellow-400 mb-2">€ 89.99</div>
                     </div>
-                    <div>
-                        <div class="text-base font-bold text-yellow-400 mb-3">€ 149.99</div>
-                        <button onclick="addProductToCart('Gold Signature Ring', 149.99)" class="w-full border border-green-600 py-2 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
-                            In den Warenkorb
-                        </button>
-                    </div>
+                    <button onclick="addToShop('Vintage Denim Jacket', 89.99)" class="border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
+                        Kaufen
+                    </button>
                 </div>
 
-                <!-- Produkt 3 -->
-                <div class="terminal-bg border border-green-800 rounded-xl p-4 flex flex-col justify-between hover:border-green-400 transition">
+                <div class="terminal-bg border border-green-800 p-4 rounded flex flex-col justify-between">
                     <div>
-                        <div class="text-[10px] text-green-500 font-bold uppercase mb-1">Levis // Apparel</div>
-                        <h3 class="font-bold text-green-200 text-base mb-2">Vintage Denim Jacket</h3>
-                        <p class="text-xs text-zinc-400 mb-4">Klassische Jeansjacke im authentischen Look.</p>
+                        <div class="text-[10px] text-green-500 font-bold mb-1">NIKE // FOOTWEAR</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">Air Max Pulse Sneaker</h4>
+                        <div class="text-sm font-bold text-yellow-400 mb-2">€ 159.99</div>
                     </div>
-                    <div>
-                        <div class="text-base font-bold text-yellow-400 mb-3">€ 89.99</div>
-                        <button onclick="addProductToCart('Vintage Denim Jacket', 89.99)" class="w-full border border-green-600 py-2 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
-                            In den Warenkorb
-                        </button>
-                    </div>
+                    <button onclick="addToShop('Air Max Pulse Sneaker', 159.99)" class="border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
+                        Kaufen
+                    </button>
                 </div>
 
-                <!-- Produkt 4 -->
-                <div class="terminal-bg border border-green-800 rounded-xl p-4 flex flex-col justify-between hover:border-green-400 transition">
+                <div class="terminal-bg border border-green-800 p-4 rounded flex flex-col justify-between">
                     <div>
-                        <div class="text-[10px] text-green-500 font-bold uppercase mb-1">Levis // Apparel</div>
-                        <h3 class="font-bold text-green-200 text-base mb-2">501 Original Jeans</h3>
-                        <p class="text-xs text-zinc-400 mb-4">Der zeitlose Denim-Klassiker.</p>
+                        <div class="text-[10px] text-green-500 font-bold mb-1">PUMA // FOOTWEAR</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">RS-X Hardcore Trainer</h4>
+                        <div class="text-sm font-bold text-yellow-400 mb-2">€ 109.99</div>
                     </div>
-                    <div>
-                        <div class="text-base font-bold text-yellow-400 mb-3">€ 79.99</div>
-                        <button onclick="addProductToCart('501 Original Jeans', 79.99)" class="w-full border border-green-600 py-2 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
-                            In den Warenkorb
-                        </button>
-                    </div>
+                    <button onclick="addToShop('RS-X Hardcore Trainer', 109.99)" class="border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
+                        Kaufen
+                    </button>
                 </div>
+            </div>
+        </div>
 
-                <!-- Produkt 5 -->
-                <div class="terminal-bg border border-green-800 rounded-xl p-4 flex flex-col justify-between hover:border-green-400 transition">
-                    <div>
-                        <div class="text-[10px] text-green-500 font-bold uppercase mb-1">Nike // Footwear</div>
-                        <h3 class="font-bold text-green-200 text-base mb-2">Air Max Pulse</h3>
-                        <p class="text-xs text-zinc-400 mb-4">Urbaner Sneaker mit Dämpfungssystem.</p>
+        <!-- MISSION 3 VIEW (SMARTPHONE) -->
+        <div id="view-mission3" class="hidden space-y-4">
+            <div class="flex justify-center my-2">
+                <div class="w-72 bg-zinc-900 border-4 border-zinc-700 rounded-[40px] p-4 shadow-2xl relative">
+                    <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-24 h-4 bg-black rounded-b-xl flex justify-center items-center gap-2">
+                        <div class="w-2 h-2 bg-zinc-800 rounded-full"></div>
+                        <div class="w-3 h-1 bg-zinc-800 rounded-full"></div>
                     </div>
-                    <div>
-                        <div class="text-base font-bold text-yellow-400 mb-3">€ 159.99</div>
-                        <button onclick="addProductToCart('Air Max Pulse', 159.99)" class="w-full border border-green-600 py-2 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
-                            In den Warenkorb
-                        </button>
+                    
+                    <div class="flex justify-between items-center text-[11px] text-zinc-400 mt-4 mb-2 px-2">
+                        <span>21:15</span>
+                        <span id="m3-timer" class="text-red-400 font-bold">60s</span>
+                        <span>🔋 99%</span>
                     </div>
-                </div>
 
-                <!-- Produkt 6 -->
-                <div class="terminal-bg border border-green-800 rounded-xl p-4 flex flex-col justify-between hover:border-green-400 transition">
-                    <div>
-                        <div class="text-[10px] text-green-500 font-bold uppercase mb-1">Puma // Footwear</div>
-                        <h3 class="font-bold text-green-200 text-base mb-2">RS-X Hardcore Trainer</h3>
-                        <p class="text-xs text-zinc-400 mb-4">Futuristischer Retro-Sneaker.</p>
+                    <div class="bg-gradient-to-b from-zinc-950 to-black border border-zinc-800 rounded-2xl p-4 text-center mb-4 min-h-[220px] flex flex-col justify-between">
+                        <div>
+                            <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Device Locked</div>
+                            <div class="text-xs text-yellow-400 mt-1">Sicherer PIN-Lock aktiv</div>
+                        </div>
+                        <div>
+                            <div id="phone-dots" class="text-2xl text-green-400 tracking-widest my-2 font-mono">____</div>
+                            <div id="phone-status" class="text-[11px] text-red-400 h-4 font-bold">PIN eingeben</div>
+                        </div>
+                        <div class="text-[10px] text-zinc-600 bg-zinc-900/50 p-1 rounded">
+                            📩 PIN rotiert alle 60s
+                        </div>
                     </div>
-                    <div>
-                        <div class="text-base font-bold text-yellow-400 mb-3">€ 109.99</div>
-                        <button onclick="addProductToCart('RS-X Hardcore Trainer', 109.99)" class="w-full border border-green-600 py-2 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
-                            In den Warenkorb
-                        </button>
+
+                    <div class="grid grid-cols-3 gap-2 px-1">
+                        <button onclick="pressKey('1')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">1</button>
+                        <button onclick="pressKey('2')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">2</button>
+                        <button onclick="pressKey('3')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">3</button>
+                        <button onclick="pressKey('4')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">4</button>
+                        <button onclick="pressKey('5')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">5</button>
+                        <button onclick="pressKey('6')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">6</button>
+                        <button onclick="pressKey('7')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">7</button>
+                        <button onclick="pressKey('8')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">8</button>
+                        <button onclick="pressKey('9')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">9</button>
+                        <button onclick="pressKey('C')" class="bg-red-950/80 hover:bg-red-900 text-red-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center">C</button>
+                        <button onclick="pressKey('0')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold">0</button>
+                        <button onclick="pressKey('OK')" class="bg-green-950/80 hover:bg-green-900 text-green-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center">OK</button>
                     </div>
                 </div>
             </div>
@@ -205,96 +231,132 @@
 
     </main>
 
-    <!-- Warenkorb Modal -->
+    <!-- Warenkorb Modal für Shop -->
     <div id="cart-modal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center p-4 z-50">
-        <div class="terminal-bg border border-green-500 p-6 rounded-xl max-w-lg w-full glow-box space-y-4">
+        <div class="terminal-bg border border-green-500 p-6 rounded-xl max-w-sm w-full space-y-3">
             <div class="flex justify-between items-center border-b border-green-800 pb-2">
-                <h3 class="text-lg font-bold text-green-300">🛒 Ihr Veno Warenkorb</h3>
-                <button onclick="closeCartModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
+                <span class="font-bold text-green-300">Warenkorb</span>
+                <button onclick="closeCart()" class="text-green-500 font-bold">[X]</button>
             </div>
-            <div id="cart-items-list" class="max-h-48 overflow-y-auto space-y-2 text-xs text-green-400 font-mono">
-                Warenkorb ist leer.
-            </div>
-            <div class="border-t border-green-800 pt-3 flex justify-between items-center font-bold text-sm">
-                <span>Gesamtbetrag:</span>
-                <span id="cart-total-price" class="text-yellow-400">€ 0.00</span>
-            </div>
-            <button onclick="executeCheckout()" class="w-full bg-green-950 border border-green-500 py-2.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase rounded">
-                Zur Kasse / Checkout
-            </button>
+            <div id="cart-items" class="text-xs text-green-400 font-mono space-y-1">Leerer Warenkorb.</div>
+            <button onclick="alert('Checkout aktiv')" class="w-full bg-green-950 border border-green-500 py-2 text-xs font-bold uppercase rounded">Zur Kasse</button>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center text-xs text-green-600 mt-12 border-t border-green-900 pt-4">
-        VENO LABS // SECURE ENVIRONMENT
-    </footer>
-
     <!-- Script Logic -->
     <script>
-        let cart = [];
-        let serverLogs = document.getElementById('server-log');
+        let currentView = 'dashboard';
+        let globalTimer = 60;
+        let secUser = "admin";
+        let secPass = "secret";
+        let phonePin = "4829";
+        let pinInput = "";
+        let shopCartList = [];
 
-        function logActivity(msg) {
-            if (!serverLogs) return;
-            const timeStr = new Date().toLocaleTimeString();
-            serverLogs.innerHTML += `<div>[${timeStr}] ${msg}</div>`;
-            serverLogs.scrollTop = serverLogs.scrollHeight;
+        // Timer Intervall für Rotation
+        setInterval(() => {
+            globalTimer--;
+            if (globalTimer <= 0) {
+                globalTimer = 60;
+                rotateSecrets();
+            }
+            const t1 = document.getElementById('m1-timer');
+            const t3 = document.getElementById('m3-timer');
+            if (t1) t1.innerText = globalTimer + "s";
+            if (t3) t3.innerText = globalTimer + "s";
+        }, 1000);
+
+        function rotateSecrets() {
+            const users = ["operator", "hacker", "rooter", "adminx"];
+            const passes = ["matrix99", "shadow01", "sec2026", "firewall"];
+            const pins = ["1984", "7392", "5028", "9146"];
+            const idx = Math.floor(Math.random() * users.length);
+            secUser = users[idx];
+            secPass = passes[idx];
+            phonePin = pins[idx];
+            console.log(`[ROTATION] Neues Secret -> User: ${secUser} | Pass: ${secPass} | PIN: ${phonePin}`);
         }
 
-        function toggleView(viewName) {
-            const dash = document.getElementById('view-dashboard');
-            const shop = document.getElementById('view-shop');
-            if (viewName === 'shop') {
-                dash.classList.add('hidden');
-                shop.classList.remove('hidden');
-                logActivity("Web-Browser: VENO E-Commerce Website geöffnet.");
+        function switchView(viewId) {
+            document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-mission1').classList.add('hidden');
+            document.getElementById('view-mission2').classList.add('hidden');
+            document.getElementById('view-mission3').classList.add('hidden');
+
+            document.getElementById('view-' + viewId).classList.remove('hidden');
+            currentView = viewId;
+        }
+
+        // Mission 1 Logik
+        function evalMission1() {
+            const uVal = document.getElementById('m1-user').value;
+            const pVal = document.getElementById('m1-pass').value;
+            
+            let uStr = "";
+            for (let i = 0; i < secUser.length; i++) {
+                uStr += (i < uVal.length && uVal[i] === secUser[i]) ? `[${uVal[i]}] ` : "_ ";
+            }
+            document.getElementById('m1-user-fb').innerText = `User: ${uStr}`;
+
+            let pStr = "";
+            for (let i = 0; i < secPass.length; i++) {
+                pStr += (i < pVal.length && pVal[i] === secPass[i]) ? `[${pVal[i]}] ` : "_ ";
+            }
+            document.getElementById('m1-pass-fb').innerText = `Pass: ${pStr}`;
+
+            if (uVal === secUser && pVal === secPass) {
+                document.getElementById('m1-success').classList.remove('hidden');
             } else {
-                shop.classList.add('hidden');
-                dash.classList.remove('hidden');
-                logActivity("Web-Browser: Zum Dashboard gewechselt.");
+                document.getElementById('m1-success').classList.add('hidden');
             }
         }
 
-        function addProductToCart(name, price) {
-            cart.push({ name, price });
-            document.getElementById('cart-counter').innerText = cart.length;
-            logActivity(`Shop-Ereignis: "${name}" (€${price}) in den Warenkorb gelegt.`);
-            alert(`"${name}" wurde dem Warenkorb hinzugefügt!`);
+        // Mission 2 Logik
+        function addToShop(item, price) {
+            shopCartList.push({item, price});
+            document.getElementById('shop-cart-count').innerText = shopCartList.length;
+            alert(`"${item}" hinzugefügt.`);
         }
-
-        function openCartModal() {
-            const listEl = document.getElementById('cart-items-list');
-            const totalEl = document.getElementById('cart-total-price');
-            
-            if (cart.length === 0) {
-                listEl.innerHTML = "Warenkorb ist leer.";
-                totalEl.innerText = "€ 0.00";
+        function openCart() {
+            const cEl = document.getElementById('cart-items');
+            if (shopCartList.length === 0) {
+                cEl.innerText = "Warenkorb ist leer.";
             } else {
-                let html = "";
-                let total = 0;
-                cart.forEach((item, idx) => {
-                    html += `<div class="flex justify-between border-b border-zinc-900 pb-1"><span>${idx+1}. ${item.name}</span> <span class="text-yellow-400">€ ${item.price.toFixed(2)}</span></div>`;
-                    total += item.price;
-                });
-                listEl.innerHTML = html;
-                totalEl.innerText = `€ ${total.toFixed(2)}`;
+                cEl.innerHTML = shopCartList.map((i, idx) => `${idx+1}. ${i.item} - €${i.price}`).join('<br>');
             }
             document.getElementById('cart-modal').classList.remove('hidden');
         }
-
-        function closeCartModal() {
+        function closeCart() {
             document.getElementById('cart-modal').classList.add('hidden');
         }
 
-        function executeCheckout() {
-            if (cart.length === 0) {
-                alert("Der Warenkorb ist leer.");
-                return;
+        // Mission 3 Logik
+        function pressKey(k) {
+            const stat = document.getElementById('phone-status');
+            const dots = document.getElementById('phone-dots');
+
+            if (k === 'C') {
+                pinInput = "";
+                stat.innerText = "PIN zurückgesetzt";
+            } else if (k === 'OK') {
+                if (pinInput === phonePin) {
+                    stat.className = "text-[11px] text-green-400 h-4 font-bold";
+                    stat.innerText = "ZUGRIFF ERLAUBT!";
+                } else {
+                    stat.className = "text-[11px] text-red-400 h-4 font-bold";
+                    stat.innerText = "Falscher PIN!";
+                    pinInput = "";
+                }
+            } else {
+                if (pinInput.length < 4) pinInput += k;
+                stat.innerText = "Prüfe PIN...";
             }
-            logActivity(`Checkout aufgerufen mit ${cart.length} Artikeln. Standard-Käufer-Session aktiv.`);
-            alert("Checkout-Prozess gestartet. Führe deine Angriffe über deine externen PowerShell-Skripte aus.");
-            closeCartModal();
+
+            let dStr = "";
+            for(let i=0; i<4; i++) {
+                dStr += (i < pinInput.length) ? "*" : "_";
+            }
+            if(dots) dots.innerText = dStr;
         }
     </script>
 </body>
