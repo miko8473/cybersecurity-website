@@ -32,10 +32,8 @@
         <h1 class="text-2xl md:text-3xl font-bold tracking-wider glow-text uppercase">
             // Cyber Security Test Website
         </h1>
-        <div class="mt-4 md:mt-0 flex gap-4">
-            <button onclick="launchRealPowerShell()" class="bg-black border border-green-500 px-4 py-2 hover:bg-green-500 hover:text-black transition uppercase text-sm glow-box">
-                [ PowerShell Starten ]
-            </button>
+        <div class="text-xs text-green-500 border border-green-800 px-3 py-1 bg-black">
+            STATUS: SECURE LAB ACTIVE
         </div>
     </header>
 
@@ -44,9 +42,9 @@
         
         <!-- Welcome Section -->
         <div class="terminal-bg p-6 rounded glow-box mb-8">
-            <h2 class="text-xl text-green-400 mb-2 font-bold">[ ADVANCED LAB READY ]</h2>
+            <h2 class="text-xl text-green-400 mb-2 font-bold">[ CTF TRAINING ENVIRONMENT ]</h2>
             <p class="text-green-300 leading-relaxed">
-                Willkommen im anspruchsvollen Security-Lab. Hier gibt es keine billigen Auto-Löser. Die Systeme verlangen echtes technisches Verständnis, Code-Analyse und saubere Brute-Force- oder Logik-Angriffe über verschiedene Schwierigkeitsgrade hinweg.
+                Willkommen im anspruchsvollen Security-Lab. Hier wird echtes technisches Geschick verlangt. Analysiere die Missionen, beachte dynamische Timer (Credential- & PIN-Rotation) und nutze deine Fähigkeiten, um die Schutzwälle zu überwinden.
             </p>
         </div>
 
@@ -87,7 +85,7 @@
                     <div class="text-xs text-green-500 mb-1">MISSION 03</div>
                     <h3 class="text-xl font-bold mb-3 text-green-300">Virtuelles Smartphone Lock</h3>
                     <p class="text-sm text-green-400/80 mb-4">
-                        Ein Smartphone mit dynamischem, alle 60 Sek. wechselndem Experten-PIN und strengem Rate-Limiting.
+                        Ein Smartphone mit zufälligem, alle 60 Sek. wechselndem Experten-PIN und strengem Rate-Limiting.
                     </p>
                 </div>
                 <button onclick="startMission(3)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm">
@@ -117,16 +115,6 @@
         let dynamicLoginCreds = { user: "admin", pass: "1234" };
         let dynamicSmartphonePin = "4829";
         let countdownTime = 60;
-
-        // Funktion für echte PowerShell (Kopiert Startbefehl / generiert Skript)
-        function launchRealPowerShell() {
-            const psCommand = "powershell.exe -NoExit -Command \"Write-Host '[+] Lab Terminal Initialisiert. Bereit für Scripte.' -ForegroundColor Green\"";
-            navigator.clipboard.writeText(psCommand).then(() => {
-                alert("[+] PowerShell-Befehl wurde in die Zwischenablage kopiert!\n\nDrücke WIN + R, tippe 'powershell', drücke Enter und füge den Befehl (Strg+V) ein, um die echte PowerShell zu starten.");
-            }).catch(() => {
-                alert("Öffne manuell deine Windows PowerShell (WIN + R -> 'powershell').");
-            });
-        }
 
         function startMission(missionId) {
             currentMissionId = missionId;
@@ -200,7 +188,7 @@
                         </div>
                     `;
                 } else if (diff === 'medium') {
-                    tips = "Tipp: Credentials wechseln alle 60 Sekunden! Passe dich dem Timer an oder nutze ein schnelles Brute-Force-Skript.";
+                    tips = "Tipp: Credentials wechseln alle 60 Sekunden! Passe dich dem Timer an oder analysiere die Konsole.";
                     interactiveHtml = `
                         <div class="bg-yellow-950/20 border border-yellow-600 p-3 mb-4 text-xs text-yellow-300">
                             [!] Credential-Rotation aktiv. Nächster Wechsel in <span id="global-timer" class="font-bold">60</span> Sek.
@@ -212,7 +200,7 @@
                         </div>
                     `;
                 } else {
-                    tips = "Tipp: Strenge Firewall blockiert Standard-SQLi. Analysiere den Quelltext oder nutze einen fortgeschrittenen Bypass.";
+                    tips = "Tipp: Strenge Firewall blockiert Standard-SQLi. Nutze fortgeschrittene Payloads oder Logik-Bypasses.";
                     interactiveHtml = `
                         <div class="bg-red-950/20 border border-red-600 p-3 mb-4 text-xs text-red-300">
                             [!] WAF / Firewall aktiv. Credentials wechseln alle 60 Sek. (<span id="global-timer" class="font-bold">60</span>s).
@@ -226,7 +214,7 @@
                 }
             } else if (missionId === 2) {
                 if (diff === 'easy') {
-                    tips = "Tipp: Simuliere Last durch wiederholtes Klicken (10 Requests), um den Server zu fluten.";
+                    tips = "Tipp: Simuliere Last durch wiederholtes Klicken (10 Requests), um den Server zu überlasten.";
                     interactiveHtml = `
                         <div class="space-y-3 text-center">
                             <button onclick="checkMission2('easy')" class="w-full bg-green-950 border border-green-500 py-3 hover:bg-green-500 hover:text-black transition font-bold">DDoS Request senden</button>
@@ -271,10 +259,10 @@
                         </div>
                     `;
                 } else {
-                    tips = "Tipp: Experten-Modus! Der PIN wird absolut zufällig generiert und wechselt alle 60 Sekunden (<span id='global-timer' class='font-bold'>60</span>s). Zudem greift ein Rate-Limiter. Du musst den aktuellen Code durch Skripting oder präzises Timing erraten.";
+                    tips = "Tipp: Experten-Modus! Der PIN wird absolut zufällig generiert und wechselt alle 60 Sekunden (<span id='global-timer' class='font-bold'>60</span>s). Zudem greift ein Rate-Limiter.";
                     interactiveHtml = `
                         <div class="bg-red-950/20 border border-red-600 p-3 mb-4 text-xs text-red-300">
-                            [!] FIREWALL AKTIV: Zufälliger 4-Stelliger PIN wechselt alle 60 Sek. (<span id="global-timer" class="font-bold">60</span>s). Falscheingaben sperren temporär!
+                            [!] FIREWALL AKTIV: Zufälliger 4-Stelliger PIN wechselt alle 60 Sek. (<span id="global-timer" class="font-bold">60</span>s).
                         </div>
                         <div class="space-y-3">
                             <input type="password" id="m3-pin" maxlength="4" placeholder="Zufälliger Experte-PIN" class="w-full bg-black border border-red-500 p-2 text-red-300 text-sm text-center tracking-widest text-lg outline-none">
@@ -300,7 +288,6 @@
         }
 
         function generateFreshData(missionId) {
-            // Generiert neue zufällige Zugangsdaten & Smartphone-PINs alle 60 Sekunden
             const randomUserNum = Math.floor(1000 + Math.random() * 9000);
             const randomPinNum = Math.floor(1000 + Math.random() * 9000);
             
@@ -313,7 +300,6 @@
             console.log(`[SYS-UPDATE] Neue Live-Daten generiert -> Login: ${dynamicLoginCreds.user} / ${dynamicLoginCreds.pass} | Smartphone PIN: ${dynamicSmartphonePin}`);
         }
 
-        // Validierungs-Logik
         let clickCounter = 0;
 
         function checkMission1(diff) {
@@ -330,13 +316,13 @@
                 if (u === dynamicLoginCreds.user && p === dynamicLoginCreds.pass) {
                     showSuccessScreen("Mission 01: Login", "Mittel (Rotation überwunden)");
                 } else {
-                    alert(`Zugriff verweigert: Falsche Credentials! (Tipp: Aktuelles Passwort ist '${dynamicLoginCreds.pass}' – achte auf den 60-Sekunden-Timer).`);
+                    alert("Zugriff verweigert: Falsche Credentials! Achte auf den 60-Sekunden-Timer.");
                 }
             } else {
                 if ((u === dynamicLoginCreds.user && p === dynamicLoginCreds.pass) || u.includes("' OR 1=1")) {
                     showSuccessScreen("Mission 01: Login", "Experte (WAF & Rotation Bypass)");
                 } else {
-                    alert(`Firewall blockiert! Aktuelle gültige Credentials wären: User: ${dynamicLoginCreds.user} | Pass: ${dynamicLoginCreds.pass}`);
+                    alert("Firewall blockiert! Payload oder Credentials ungültig.");
                 }
             }
         }
@@ -378,12 +364,11 @@
                 if (pin === dynamicSmartphonePin) {
                     showSuccessScreen("Mission 03: Smartphone", diff === 'medium' ? "Mittel" : "Experte (Zufälliger PIN geknackt)");
                 } else {
-                    alert(`Falscher PIN! Der echte rotierende PIN lautet aktuell: [ ${dynamicSmartphonePin} ] (Prüfe die Konsole oder warte auf den nächsten Timer).`);
+                    alert("Falscher PIN! Der rotierende PIN hat sich eventuell geändert oder ist falsch.");
                 }
             }
         }
 
-        // Erfolgs-Screen mit Diagramm
         function showSuccessScreen(missionName, levelName) {
             if (globalTimerInterval) clearInterval(globalTimerInterval);
             const modalContent = document.getElementById('modal-content');
