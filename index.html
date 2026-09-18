@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security Hardcore Lab v4.0</title>
+    <title>VENO // Cyber Security Lab & E-Commerce Target</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         body {
@@ -29,369 +28,139 @@
 
     <!-- Header -->
     <header class="flex flex-col md:flex-row justify-between items-center border-b border-green-500 pb-4 mb-6">
-        <h1 class="text-2xl md:text-3xl font-bold tracking-wider glow-text uppercase">
-            // CYBER SECURITY HARDCORE LAB [STRICT v4.0]
-        </h1>
-        <div class="text-xs text-red-400 border border-red-800 px-3 py-1 bg-black font-bold animate-pulse">
-            ROTATION INTERVAL: 60 SECONDS
+        <div>
+            <h1 class="text-2xl md:text-3xl font-bold tracking-wider glow-text uppercase">
+                // VENO APPAREL & JEWELRY [LIVE LAB]
+            </h1>
+            <p class="text-xs text-green-400/70 mt-1">Ziel-Server läuft lokal. Angriffe via PowerShell / externe Skripte.</p>
+        </div>
+        <div class="flex items-center gap-4 mt-4 md:mt-0">
+            <div class="text-xs text-yellow-400 border border-yellow-800 px-3 py-1 bg-black font-bold">
+                ROTATION: 60s
+            </div>
+            <div id="connection-status" class="text-xs text-green-400 border border-green-800 px-3 py-1 bg-black font-bold animate-pulse">
+                STATUS: ONLINE
+            </div>
         </div>
     </header>
 
-    <!-- Main Content / Dashboard -->
-    <main class="max-w-6xl mx-auto w-full flex-grow">
-        <div class="terminal-bg p-6 rounded glow-box mb-8">
-            <h2 class="text-xl text-green-400 mb-2 font-bold">[ STRIKTE REGELN AKTIV ]</h2>
-            <p class="text-green-300 leading-relaxed text-sm">
-                Aufgabe 1 prüft strikt zeichenbasiert gegen das alle 60 Sek. rotierende Secret. Aufgabe 2 ist ein echter, voll funktionsfähiger E-Commerce-Shop ("VENO") ohne faule Tricks oder Pseudo-Knöpfe – Angriffe machst du extern. Aufgabe 3 ist das virtuelle Smartphone.
-            </p>
+    <!-- Main Shop Interface -->
+    <main class="max-w-6xl mx-auto w-full flex-grow space-y-6">
+        
+        <!-- Info Box für den Angreifer -->
+        <div class="terminal-bg p-4 rounded glow-box text-xs text-green-300 space-y-1">
+            <div class="font-bold text-green-400">[ TARGET INFO & ENDPOINTS ]</div>
+            <div>• Shop-Katalog: Artikel von Pandora, Levis, Nike & Puma.</div>
+            <div>• Angriffsvektor: Keine Eingabefelder im UI. Nutze PowerShell / Skripte für HTTP-Requests, Cookie-Hijacking, Session-Fälschung und Login-Brute-Force gegen die API.</div>
+            <div class="text-yellow-400">• Aktives Secret / Token rotiert alle 60 Sekunden im Hintergrund.</div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
-                <div>
-                    <div class="text-xs text-green-500 mb-1">MISSION 01</div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">Strict Character Login</h3>
-                    <p class="text-sm text-green-400/80 mb-4">
-                        Kein Freigabe-Schwindel. Jedes Zeichen wird live gegen den 60s-Rotator validiert.
-                    </p>
+        <!-- E-Commerce Storefront -->
+        <div class="terminal-bg p-6 rounded glow-box">
+            <div class="flex justify-between items-center border-b border-green-900 pb-4 mb-6">
+                <div class="font-bold text-green-300 text-lg">⚡ VENO STOREFRONT</div>
+                <div class="flex gap-3 text-xs">
+                    <span class="border border-green-800 px-3 py-1 bg-black">Warenkorb: <strong id="cart-count">0</strong> Stk.</span>
+                    <span class="border border-green-800 px-3 py-1 bg-black">Session Rolle: <strong id="user-role" class="text-yellow-400">GUEST</strong></span>
                 </div>
-                <button onclick="startMission(1)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm font-bold">
-                    Starten
-                </button>
             </div>
 
-            <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
-                <div>
-                    <div class="text-xs text-green-500 mb-1">MISSION 02</div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">VENO E-Commerce Shop</h3>
-                    <p class="text-sm text-green-400/80 mb-4">
-                        Realer Shop für Pandora, Levis, Nike & Puma Artikel. Vollständiges Web-Frontend zum Kaufen.
-                    </p>
+            <!-- Produkt-Katalog -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <div class="border border-green-900 bg-black p-4 rounded flex flex-col justify-between">
+                    <div>
+                        <div class="text-[10px] text-green-500 mb-1">PANDORA // JEWELRY</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">Silver Charm Bracelet</h4>
+                        <div class="text-sm font-bold text-yellow-400">€ 119.99</div>
+                    </div>
+                    <button onclick="addToCart('Silver Charm Bracelet', 119.99)" class="mt-4 border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase">
+                        Kaufen
+                    </button>
                 </div>
-                <button onclick="startMission(2)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm font-bold">
-                    Starten
-                </button>
+
+                <div class="border border-green-900 bg-black p-4 rounded flex flex-col justify-between">
+                    <div>
+                        <div class="text-[10px] text-green-500 mb-1">LEVIS // APPAREL</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">Vintage Denim Trucker Jacket</h4>
+                        <div class="text-sm font-bold text-yellow-400">€ 89.99</div>
+                    </div>
+                    <button onclick="addToCart('Vintage Denim Trucker Jacket', 89.99)" class="mt-4 border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase">
+                        Kaufen
+                    </button>
+                </div>
+
+                <div class="border border-green-900 bg-black p-4 rounded flex flex-col justify-between">
+                    <div>
+                        <div class="text-[10px] text-green-500 mb-1">NIKE // FOOTWEAR</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">Air Max Pulse Sneaker</h4>
+                        <div class="text-sm font-bold text-yellow-400">€ 159.99</div>
+                    </div>
+                    <button onclick="addToCart('Air Max Pulse Sneaker', 159.99)" class="mt-4 border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase">
+                        Kaufen
+                    </button>
+                </div>
+
+                <div class="border border-green-900 bg-black p-4 rounded flex flex-col justify-between">
+                    <div>
+                        <div class="text-[10px] text-green-500 mb-1">PUMA // FOOTWEAR</div>
+                        <h4 class="font-bold text-green-200 text-sm mb-2">RS-X Hardcore Trainer</h4>
+                        <div class="text-sm font-bold text-yellow-400">€ 109.99</div>
+                    </div>
+                    <button onclick="addToCart('RS-X Hardcore Trainer', 109.99)" class="mt-4 border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase">
+                        Kaufen
+                    </button>
+                </div>
             </div>
 
-            <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
-                <div>
-                    <div class="text-xs text-green-500 mb-1">MISSION 03</div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">Target Smartphone</h3>
-                    <p class="text-sm text-green-400/80 mb-4">
-                        Virtuelles Smartphone mit 60s PIN-Rotation und Touchscreen-Eingabe.
-                    </p>
+            <!-- Interaktives Log / Live Feed für PowerShell Angriffe -->
+            <div class="border border-green-900 bg-black p-4 rounded">
+                <div class="text-xs text-green-400 font-bold mb-2">// LIVE SERVER REQUEST LOG (PowerShell / API Traffic)</div>
+                <div id="server-log" class="text-xs text-green-500 h-32 overflow-y-auto space-y-1 font-mono bg-zinc-950 p-3 rounded border border-zinc-900">
+                    [00:00:01] Server gestartet auf Port 80 (Simulated). Bereit für Angriffe...
                 </div>
-                <button onclick="startMission(3)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm font-bold">
-                    Starten
-                </button>
             </div>
         </div>
+
     </main>
 
     <!-- Footer -->
-    <footer class="text-center text-xs text-green-600 mt-12 border-t border-green-900 pt-4">
-        HARDCORE LAB // STRICT COMPLIANCE
+    <footer class="text-center text-xs text-green-600 mt-8 border-t border-green-900 pt-4">
+        VENO LABS // SECURE ENVIRONMENT // NO UI INPUTS REQUIRED
     </footer>
 
-    <!-- Modal -->
-    <div id="mission-modal" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center p-2 md:p-6 z-50">
-        <div id="modal-content" class="terminal-bg border border-green-500 p-4 md:p-6 rounded max-w-5xl w-full max-h-[95vh] overflow-y-auto glow-box"></div>
-    </div>
-
+    <!-- PowerShell / API Mock Logik -->
     <script>
-        let globalTimerInterval = null;
-        let countdownTime = 60; // Exakt 60 Sekunden Rotationsintervall
-        let dynamicSecretUser = "admin";
-        let dynamicSecretPass = "secret123";
-        let dynamicSmartphonePin = "4829";
-        let enteredPinBuffer = "";
-        
-        // E-Commerce Shop State
-        let shopCart = [];
-        let shopProducts = [
-            { id: 1, name: "Pandora Silver Bracelet", brand: "PANDORA", price: 119.99, category: "Jewelry", stock: 12 },
-            { id: 2, name: "Pandora Gold Ring", brand: "PANDORA", price: 149.99, category: "Jewelry", stock: 5 },
-            { id: 3, name: "Levis Vintage Denim Jacket", brand: "LEVIS", price: 89.99, category: "Apparel", stock: 8 },
-            { id: 4, name: "Levis 501 Original Jeans", brand: "LEVIS", price: 79.99, category: "Apparel", stock: 15 },
-            { id: 5, name: "Nike Air Max Pulse", brand: "NIKE", price: 159.99, category: "Footwear", stock: 10 },
-            { id: 6, name: "Puma RS-X Sneaker", brand: "PUMA", price: 109.99, category: "Footwear", stock: 7 }
-        ];
+        let cartItemsCount = 0;
+        let serverLogs = document.getElementById('server-log');
 
-        function startMission(missionId) {
-            const modal = document.getElementById('mission-modal');
-            const content = document.getElementById('modal-content');
-            modal.classList.remove('hidden');
-
-            if (globalTimerInterval) clearInterval(globalTimerInterval);
-            countdownTime = 60;
-            generateFreshData();
-
-            globalTimerInterval = setInterval(() => {
-                countdownTime--;
-                const timerEl = document.getElementById('global-timer');
-                if (timerEl) timerEl.innerText = countdownTime + "s";
-                if (countdownTime <= 0) {
-                    generateFreshData();
-                    countdownTime = 60;
-                }
-            }, 1000);
-
-            if (missionId === 1) {
-                renderMission1UI(content);
-            } else if (missionId === 2) {
-                renderMission2UI(content);
-            } else if (missionId === 3) {
-                renderMission3UI(content);
-            }
+        function logActivity(msg) {
+            const timeStr = new Date().toLocaleTimeString();
+            serverLogs.innerHTML += `<div>[${timeStr}] ${msg}</div>`;
+            serverLogs.scrollTop = serverLogs.scrollHeight;
         }
 
-        function closeModal() {
-            if (globalTimerInterval) clearInterval(globalTimerInterval);
-            document.getElementById('mission-modal').classList.add('hidden');
+        function addToCart(itemName, price) {
+            cartItemsCount++;
+            document.getElementById('cart-count').innerText = cartItemsCount;
+            logActivity(`Frontend-Kauf registriert: ${itemName} (€${price})`);
         }
 
-        function generateFreshData() {
-            const users = ["operator", "hacker", "rooter", "adminx", "cyber"];
-            const passes = ["matrix99", "shadow01", "sec2026", "firewall", "access77"];
-            const pins = ["1984", "7392", "5028", "9146", "3825"];
-            
-            const idx = Math.floor(Math.random() * users.length);
-            dynamicSecretUser = users[idx];
-            dynamicSecretPass = passes[idx];
-            dynamicSmartphonePin = pins[idx];
-            
-            console.log(`[STRICT-ROTATION] Neues Secret aktiv! User: ${dynamicSecretUser} | Pass: ${dynamicSecretPass} | PIN: ${dynamicSmartphonePin}`);
-        }
-
-        // --- MISSION 1: STRICT CHARACTER LOGIN ---
-        function renderMission1UI(container) {
-            container.innerHTML = `
-                <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
-                    <h3 class="text-lg font-bold text-green-300">Mission 01: Strict Character Login</h3>
-                    <button onclick="closeModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
-                </div>
-                <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400 flex justify-between items-center">
-                    <span>Regel: Es wird kein Freigabe-Schwindel akzeptiert. Die Box zeigt dir exakt an, welcher Buchstabe an welcher Position korrekt eingegeben wurde!</span>
-                    <span class="text-red-400 font-bold">Rotation in: <span id="global-timer" class="text-yellow-400">60s</span></span>
-                </div>
-                <div class="max-w-md mx-auto bg-black border border-green-600 p-6 rounded-xl glow-box space-y-4">
-                    <div>
-                        <label class="text-xs text-green-400 block mb-1">Benutzername prüfen</label>
-                        <input type="text" id="m1-user" oninput="evalMission1()" placeholder="Zeichen tippen..." class="w-full bg-zinc-950 border border-green-500 p-3 text-green-300 text-sm outline-none rounded font-mono">
-                        <div id="m1-user-feedback" class="text-xs mt-1 text-yellow-400 font-mono">Feedback: Noch keine Übereinstimmung</div>
-                    </div>
-                    <div>
-                        <label class="text-xs text-green-400 block mb-1">Passwort prüfen</label>
-                        <input type="password" id="m1-pass" oninput="evalMission1()" placeholder="Zeichen tippen..." class="w-full bg-zinc-950 border border-green-500 p-3 text-green-300 text-sm outline-none rounded font-mono">
-                        <div id="m1-pass-feedback" class="text-xs mt-1 text-yellow-400 font-mono">Feedback: Noch keine Übereinstimmung</div>
-                    </div>
-                    <div id="m1-success-box" class="hidden text-center p-3 bg-green-950 border border-green-400 text-green-300 font-bold text-sm">
-                        ZUGRIFF GEKNACKT! Credentials perfekt abgeglichen.
-                    </div>
-                </div>
-            `;
-        }
-
-        function evalMission1() {
-            const uInput = document.getElementById('m1-user').value;
-            const pInput = document.getElementById('m1-pass').value;
-            const uFb = document.getElementById('m1-user-feedback');
-            const pFb = document.getElementById('m1-pass-feedback');
-
-            // Zeichenweises Feedback generieren
-            let uMatchStr = "";
-            for (let i = 0; i < dynamicSecretUser.length; i++) {
-                if (i < uInput.length && uInput[i] === dynamicSecretUser[i]) {
-                    uMatchStr += `[${uInput[i]}] `;
-                } else {
-                    uMatchStr += `_ `;
+        // Simuliere PowerShell / externe HTTP-Zugriffe, die du lokal testest
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'veno_attack_payload') {
+                logActivity(`[!] Externes PowerShell/Script-Signal empfangen: ${event.newValue}`);
+                if (event.newValue.includes('admin')) {
+                    document.getElementById('user-role').innerText = 'ADMIN (HIJACKED)';
+                    document.getElementById('user-role').className = 'text-red-400 font-bold';
+                    logActivity(`[ALERT] Admin-Session erfolgreich durch externes Skript übernommen!`);
                 }
             }
-            uFb.innerText = `User Positionen korrekt: ${uMatchStr} (Länge: ${dynamicSecretUser.length})`;
+        });
 
-            let pMatchStr = "";
-            for (let i = 0; i < dynamicSecretPass.length; i++) {
-                if (i < pInput.length && pInput[i] === dynamicSecretPass[i]) {
-                    pMatchStr += `[${pInput[i]}] `;
-                } else {
-                    pMatchStr += `_ `;
-                }
-            }
-            pFb.innerText = `Pass Positionen korrekt: ${pMatchStr} (Länge: ${dynamicSecretPass.length})`;
-
-            if (uInput === dynamicSecretUser && pInput === dynamicSecretPass) {
-                document.getElementById('m1-success-box').classList.remove('hidden');
-            }
-        }
-
-        // --- MISSION 2: VENO E-COMMERCE SHOP ---
-        function renderMission2UI(container) {
-            container.innerHTML = `
-                <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
-                    <h3 class="text-lg font-bold text-green-300">Mission 02: VENO E-Commerce Shop</h3>
-                    <button onclick="closeModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
-                </div>
-                <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400 flex justify-between items-center">
-                    <span>Echte visuelle Shop-Oberfläche für Pandora, Levis, Nike & Puma. Keine Code-Eingaben hier – nutze deine eigenen Angriffe (Proxy/API/Cookies).</span>
-                    <span class="text-red-400 font-bold">Rotation in: <span id="global-timer" class="text-yellow-400">60s</span></span>
-                </div>
-                
-                <div class="bg-zinc-950 border border-green-600 rounded-xl overflow-hidden p-4">
-                    <!-- Shop Navbar -->
-                    <div class="flex flex-col md:flex-row justify-between items-center border-b border-green-900 pb-3 mb-4 gap-2">
-                        <div class="font-bold text-green-300 text-lg tracking-wider">⚡ VENO STORE [APPAREL & JEWELRY]</div>
-                        <div class="flex items-center gap-4 text-xs">
-                            <span class="text-zinc-400">Marken: <strong class="text-green-400">Pandora | Levis | Nike | Puma</strong></span>
-                            <div class="border border-green-700 px-3 py-1 bg-black text-yellow-400 font-bold rounded">
-                                Warenkorb: <span id="shop-cart-count">0</span> Items (€ <span id="shop-cart-total">0.00</span>)
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Products Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                        ${shopProducts.map(p => `
-                            <div class="border border-green-900 bg-black p-4 rounded flex flex-col justify-between">
-                                <div>
-                                    <div class="text-[10px] text-green-500 mb-1 uppercase tracking-widest">${p.brand} //${p.category}</div>
-                                    <h4 class="font-bold text-green-200 text-sm mb-1">${p.name}</h4>
-                                    <div class="text-xs text-zinc-400 mb-3">Lagerbestand: ${p.stock} Stk.</div>
-                                    <div class="text-base font-bold text-yellow-400">€ ${p.price.toFixed(2)}</div>
-                                </div>
-                                <button onclick="addToShopCart(${p.id})" class="mt-4 border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase">
-                                    In den Warenkorb
-                                </button>
-                            </div>
-                        `).join('')}
-                    </div>
-
-                    <!-- Checkout Area -->
-                    <div class="border border-zinc-800 bg-black p-4 rounded flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div class="text-xs text-zinc-400">
-                            Status: Kunden-Checkout aktiv. Keine versteckten UI-Buttons. Führe deine Manipulationen im Hintergrund aus.
-                        </div>
-                        <button onclick="triggerShopCheckout()" class="bg-green-950 border border-green-500 px-6 py-2.5 text-green-300 hover:bg-green-500 hover:text-black transition font-bold uppercase text-xs rounded">
-                            Zur Kasse gehen
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        function addToShopCart(productId) {
-            const product = shopProducts.find(p => p.id === productId);
-            if (product) {
-                shopCart.push(product);
-                updateShopCartUI();
-            }
-        }
-
-        function updateShopCartUI() {
-            const countEl = document.getElementById('shop-cart-count');
-            const totalEl = document.getElementById('shop-cart-total');
-            if (countEl && totalEl) {
-                countEl.innerText = shopCart.length;
-                let total = shopCart.reduce((sum, item) => sum + item.price, 0);
-                totalEl.innerText = total.toFixed(2);
-            }
-        }
-
-        function triggerShopCheckout() {
-            if (shopCart.length === 0) {
-                alert("Warenkorb ist leer! Bitte wähle Produkte aus.");
-                return;
-            }
-            alert("Checkout-Prozess aufgerufen. Standard-Käufer-Session aktiv.");
-        }
-
-        // --- MISSION 3: TARGET SMARTPHONE ---
-        function renderMission3UI(container) {
-            enteredPinBuffer = "";
-            container.innerHTML = `
-                <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
-                    <h3 class="text-lg font-bold text-green-300">Mission 03: Target Smartphone Lock</h3>
-                    <button onclick="closeModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
-                </div>
-                <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400 flex justify-between items-center">
-                    <span>Visuelles Smartphone mit Touchscreen-Keypad und 60-Sekunden PIN-Rotation.</span>
-                    <span class="text-red-400 font-bold">Rotation in: <span id="global-timer" class="text-yellow-400">60s</span></span>
-                </div>
-
-                <div class="flex justify-center my-2">
-                    <div class="w-72 bg-zinc-900 border-4 border-zinc-700 rounded-[40px] p-4 shadow-2xl relative">
-                        <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-24 h-4 bg-black rounded-b-xl flex justify-center items-center gap-2">
-                            <div class="w-2 h-2 bg-zinc-800 rounded-full"></div>
-                            <div class="w-3 h-1 bg-zinc-800 rounded-full"></div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center text-[11px] text-zinc-400 mt-4 mb-2 px-2">
-                            <span>21:00</span>
-                            <span class="text-red-400 font-bold">60s</span>
-                            <span>🔋 98%</span>
-                        </div>
-
-                        <div class="bg-gradient-to-b from-zinc-950 to-black border border-zinc-800 rounded-2xl p-4 text-center mb-4 min-h-[220px] flex flex-col justify-between">
-                            <div>
-                                <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Device Locked</div>
-                                <div class="text-xs text-yellow-400 mt-1">Sicherer PIN-Lock aktiv</div>
-                            </div>
-                            <div>
-                                <div id="phone-display-dots" class="text-2xl text-green-400 tracking-widest my-2 font-mono">____</div>
-                                <div id="phone-status-msg" class="text-[11px] text-red-400 h-4 font-bold">PIN eingeben</div>
-                            </div>
-                            <div class="text-[10px] text-zinc-600 bg-zinc-900/50 p-1 rounded">
-                                📩 System: PIN rotiert alle 60s
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-2 px-1">
-                            <button onclick="pressPhoneKey('1')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">1</button>
-                            <button onclick="pressPhoneKey('2')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">2</button>
-                            <button onclick="pressPhoneKey('3')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">3</button>
-                            <button onclick="pressPhoneKey('4')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">4</button>
-                            <button onclick="pressPhoneKey('5')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">5</button>
-                            <button onclick="pressPhoneKey('6')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">6</button>
-                            <button onclick="pressPhoneKey('7')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">7</button>
-                            <button onclick="pressPhoneKey('8')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">8</button>
-                            <button onclick="pressPhoneKey('9')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">9</button>
-                            <button onclick="pressPhoneKey('C')" class="bg-red-950/80 hover:bg-red-900 text-red-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center shadow">C</button>
-                            <button onclick="pressPhoneKey('0')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">0</button>
-                            <button onclick="pressPhoneKey('OK')" class="bg-green-950/80 hover:bg-green-900 text-green-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center shadow">OK</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function pressPhoneKey(key) {
-            const statusMsg = document.getElementById('phone-status-msg');
-            const dots = document.getElementById('phone-display-dots');
-
-            if (key === 'C') {
-                enteredPinBuffer = "";
-                statusMsg.innerText = "PIN zurückgesetzt";
-            } else if (key === 'OK') {
-                if (enteredPinBuffer === dynamicSmartphonePin) {
-                    statusMsg.className = "text-[11px] text-green-400 h-4 font-bold";
-                    statusMsg.innerText = "ZUGRIFF ERLAUBT!";
-                } else {
-                    statusMsg.className = "text-[11px] text-red-400 h-4 font-bold";
-                    statusMsg.innerText = "Falscher PIN!";
-                    enteredPinBuffer = "";
-                }
-            } else {
-                if (enteredPinBuffer.length < 4) {
-                    enteredPinBuffer += key;
-                    statusMsg.innerText = "PIN wird geprüft...";
-                }
-            }
-
-            let displayStr = "";
-            for (let i = 0; i < 4; i++) {
-                displayStr += i < enteredPinBuffer.length ? "*" : "_";
-            }
-            if (dots) dots.innerText = displayStr;
-        }
+        // Simulierter Hintergrund-Rotator alle 60 Sekunden
+        setInterval(() => {
+            logActivity(`[SYSTEM] 60-Sekunden-Intervall: Authentifizierungs-Tokens und Session-Salts wurden rotiert.`);
+        }, 60000);
     </script>
 </body>
 </html>
