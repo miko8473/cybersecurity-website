@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security Hardcore Lab</title>
+    <title>Cyber Security Hardcore Lab v4.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -30,123 +30,119 @@
     <!-- Header -->
     <header class="flex flex-col md:flex-row justify-between items-center border-b border-green-500 pb-4 mb-6">
         <h1 class="text-2xl md:text-3xl font-bold tracking-wider glow-text uppercase">
-            // CYBER SECURITY HARDCORE LAB [CTF v3.0]
+            // CYBER SECURITY HARDCORE LAB [STRICT v4.0]
         </h1>
         <div class="text-xs text-red-400 border border-red-800 px-3 py-1 bg-black font-bold animate-pulse">
-            WARNING: HIGH SECURITY THREAT LEVEL
+            ROTATION INTERVAL: 60 SECONDS
         </div>
     </header>
 
     <!-- Main Content / Dashboard -->
-    <main id="main-container" class="max-w-6xl mx-auto w-full flex-grow">
-        
-        <!-- Welcome Section -->
+    <main class="max-w-6xl mx-auto w-full flex-grow">
         <div class="terminal-bg p-6 rounded glow-box mb-8">
-            <h2 class="text-xl text-green-400 mb-2 font-bold">[ EXTREME TRAINING ENVIRONMENT ]</h2>
+            <h2 class="text-xl text-green-400 mb-2 font-bold">[ STRIKTE REGELN AKTIV ]</h2>
             <p class="text-green-300 leading-relaxed text-sm">
-                Keine simplen Hilfen mehr. Jede Mission besitzt eine voll ausformulierte, interaktive **visuelle Benutzeroberfläche** (Login-System, echter Fake-Shop, echtes virtuelles Smartphone). Die Schutzwälle sind 3x schwerer konfiguriert (verkürzte Rotationsintervalle, aggressive WAF, strenges Rate-Limiting).
+                Aufgabe 1 prüft strikt zeichenbasiert gegen das alle 60 Sek. rotierende Secret. Aufgabe 2 ist ein echter, voll funktionsfähiger E-Commerce-Shop ("VENO") ohne faule Tricks oder Pseudo-Knöpfe – Angriffe machst du extern. Aufgabe 3 ist das virtuelle Smartphone.
             </p>
         </div>
 
-        <!-- Missions Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- Mission 1 -->
             <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
                 <div>
                     <div class="text-xs text-green-500 mb-1">MISSION 01</div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">Secure Vault Login</h3>
+                    <h3 class="text-xl font-bold mb-3 text-green-300">Strict Character Login</h3>
                     <p class="text-sm text-green-400/80 mb-4">
-                        Authentifizierungs-Interface mit aktiver WAF und rotierenden Zugangsdaten.
+                        Kein Freigabe-Schwindel. Jedes Zeichen wird live gegen den 60s-Rotator validiert.
                     </p>
                 </div>
                 <button onclick="startMission(1)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm font-bold">
-                    Visualisierung Starten
+                    Starten
                 </button>
             </div>
 
-            <!-- Mission 2 -->
             <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
                 <div>
                     <div class="text-xs text-green-500 mb-1">MISSION 02</div>
                     <h3 class="text-xl font-bold mb-3 text-green-300">VENO E-Commerce Shop</h3>
                     <p class="text-sm text-green-400/80 mb-4">
-                        Ein kompletter, visueller Online-Shop. Nutze Session Hijacking oder Preis-Manipulation, um Adminrechte zu erlangen.
+                        Realer Shop für Pandora, Levis, Nike & Puma Artikel. Vollständiges Web-Frontend zum Kaufen.
                     </p>
                 </div>
                 <button onclick="startMission(2)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm font-bold">
-                    Visualisierung Starten
+                    Starten
                 </button>
             </div>
 
-            <!-- Mission 3 -->
             <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
                 <div>
                     <div class="text-xs text-green-500 mb-1">MISSION 03</div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">Target Smartphone Lock</h3>
+                    <h3 class="text-xl font-bold mb-3 text-green-300">Target Smartphone</h3>
                     <p class="text-sm text-green-400/80 mb-4">
-                        Visuelles Smartphone mit Apps, Benachrichtigungen und hochsicherem, rotierendem PIN-Lock.
+                        Virtuelles Smartphone mit 60s PIN-Rotation und Touchscreen-Eingabe.
                     </p>
                 </div>
                 <button onclick="startMission(3)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm font-bold">
-                    Visualisierung Starten
+                    Starten
                 </button>
             </div>
-
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="text-center text-xs text-green-600 mt-12 border-t border-green-900 pt-4">
-        HARDCORE LAB // AUTHORIZED PENETRATION TESTING ONLY
+        HARDCORE LAB // STRICT COMPLIANCE
     </footer>
 
     <!-- Modal -->
     <div id="mission-modal" class="fixed inset-0 bg-black/95 hidden flex items-center justify-center p-2 md:p-6 z-50">
-        <div id="modal-content" class="terminal-bg border border-green-500 p-4 md:p-6 rounded max-w-4xl w-full max-h-[95vh] overflow-y-auto glow-box">
-            <!-- Dynamischer Inhalt -->
-        </div>
+        <div id="modal-content" class="terminal-bg border border-green-500 p-4 md:p-6 rounded max-w-5xl w-full max-h-[95vh] overflow-y-auto glow-box"></div>
     </div>
 
-    <!-- JavaScript Logik -->
     <script>
-        let currentMissionId = null;
         let globalTimerInterval = null;
-        let dynamicLoginCreds = { user: "admin", pass: "1234" };
+        let countdownTime = 60; // Exakt 60 Sekunden Rotationsintervall
+        let dynamicSecretUser = "admin";
+        let dynamicSecretPass = "secret123";
         let dynamicSmartphonePin = "4829";
-        let countdownTime = 30; // 3x schwerer: Nur noch 30 Sekunden Rotation!
         let enteredPinBuffer = "";
-        let cartItems = 0;
+        
+        // E-Commerce Shop State
+        let shopCart = [];
+        let shopProducts = [
+            { id: 1, name: "Pandora Silver Bracelet", brand: "PANDORA", price: 119.99, category: "Jewelry", stock: 12 },
+            { id: 2, name: "Pandora Gold Ring", brand: "PANDORA", price: 149.99, category: "Jewelry", stock: 5 },
+            { id: 3, name: "Levis Vintage Denim Jacket", brand: "LEVIS", price: 89.99, category: "Apparel", stock: 8 },
+            { id: 4, name: "Levis 501 Original Jeans", brand: "LEVIS", price: 79.99, category: "Apparel", stock: 15 },
+            { id: 5, name: "Nike Air Max Pulse", brand: "NIKE", price: 159.99, category: "Footwear", stock: 10 },
+            { id: 6, name: "Puma RS-X Sneaker", brand: "PUMA", price: 109.99, category: "Footwear", stock: 7 }
+        ];
 
         function startMission(missionId) {
-            currentMissionId = missionId;
             const modal = document.getElementById('mission-modal');
             const content = document.getElementById('modal-content');
             modal.classList.remove('hidden');
 
-            let title = missionId === 1 ? "Mission 01: Secure Vault Login" : missionId === 2 ? "Mission 02: Veno E-Commerce Shop" : "Mission 03: Target Smartphone";
+            if (globalTimerInterval) clearInterval(globalTimerInterval);
+            countdownTime = 60;
+            generateFreshData();
 
-            content.innerHTML = `
-                <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
-                    <h3 class="text-lg font-bold text-green-300">${title}</h3>
-                    <button onclick="closeModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
-                </div>
-                <p class="text-sm text-green-400 mb-6">Wähle den Schwierigkeitsgrad (3x Hardcore-Faktor aktiv):</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    <button onclick="loadDifficulty(${missionId}, 'easy')" class="p-4 border border-green-600 hover:bg-green-500 hover:text-black transition text-left rounded">
-                        <div class="font-bold text-green-300">1. Standard</div>
-                        <div class="text-xs text-green-400/70 mt-1">Grundlegende Validierung.</div>
-                    </button>
-                    <button onclick="loadDifficulty(${missionId}, 'medium')" class="p-4 border border-yellow-600 hover:bg-yellow-500 hover:text-black transition text-left rounded">
-                        <div class="font-bold text-yellow-300">2. Erweitert</div>
-                        <div class="text-xs text-yellow-400/70 mt-1">30-Sekunden Credential/PIN-Rotation.</div>
-                    </button>
-                    <button onclick="loadDifficulty(${missionId}, 'expert')" class="p-4 border border-red-600 hover:bg-red-500 hover:text-black transition text-left rounded">
-                        <div class="font-bold text-red-300">3. Hardcore Experte</div>
-                        <div class="text-xs text-red-400/70 mt-1">Aggressive WAF, Rate-Limiter, Sofort-Sperre.</div>
-                    </button>
-                </div>
-            `;
+            globalTimerInterval = setInterval(() => {
+                countdownTime--;
+                const timerEl = document.getElementById('global-timer');
+                if (timerEl) timerEl.innerText = countdownTime + "s";
+                if (countdownTime <= 0) {
+                    generateFreshData();
+                    countdownTime = 60;
+                }
+            }, 1000);
+
+            if (missionId === 1) {
+                renderMission1UI(content);
+            } else if (missionId === 2) {
+                renderMission2UI(content);
+            } else if (missionId === 3) {
+                renderMission3UI(content);
+            }
         }
 
         function closeModal() {
@@ -154,234 +150,217 @@
             document.getElementById('mission-modal').classList.add('hidden');
         }
 
-        function loadDifficulty(missionId, diff) {
-            const content = document.getElementById('modal-content');
-            if (globalTimerInterval) clearInterval(globalTimerInterval);
+        function generateFreshData() {
+            const users = ["operator", "hacker", "rooter", "adminx", "cyber"];
+            const passes = ["matrix99", "shadow01", "sec2026", "firewall", "access77"];
+            const pins = ["1984", "7392", "5028", "9146", "3825"];
+            
+            const idx = Math.floor(Math.random() * users.length);
+            dynamicSecretUser = users[idx];
+            dynamicSecretPass = passes[idx];
+            dynamicSmartphonePin = pins[idx];
+            
+            console.log(`[STRICT-ROTATION] Neues Secret aktiv! User: ${dynamicSecretUser} | Pass: ${dynamicSecretPass} | PIN: ${dynamicSmartphonePin}`);
+        }
 
-            let diffTitle = diff === 'easy' ? 'Standard' : diff === 'medium' ? 'Erweitert' : 'Hardcore Experte';
-            let diffColor = diff === 'easy' ? 'text-green-400' : diff === 'medium' ? 'text-yellow-400' : 'text-red-400';
-            let tips = "";
-            let visualInterfaceHtml = "";
-
-            countdownTime = 30;
-            generateFreshData();
-            globalTimerInterval = setInterval(() => {
-                countdownTime--;
-                const timerEl = document.getElementById('global-timer');
-                if (timerEl) timerEl.innerText = countdownTime + "s";
-                if (countdownTime <= 0) {
-                    generateFreshData();
-                    countdownTime = 30;
-                }
-            }, 1000);
-
-            if (missionId === 1) {
-                tips = "Visuelles Login-Portal. Achte im Erweitert/Experten-Modus auf den 30-Sekunden-Timer und die WAF-Sperre.";
-                visualInterfaceHtml = `
-                    <div class="max-w-md mx-auto bg-black border border-green-600 p-6 rounded-xl glow-box">
-                        <div class="text-center mb-6">
-                            <div class="text-xs text-red-400 mb-2 font-bold">[!] Nächster Credential-Wechsel in: <span id="global-timer" class="text-yellow-400">30s</span></div>
-                            <h4 class="text-lg font-bold text-green-300">SYSTEM AUTHENTICATION</h4>
-                        </div>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="text-xs text-green-400 block mb-1">Benutzername / SQL-Payload</label>
-                                <input type="text" id="m1-user" placeholder="operator_x" class="w-full bg-zinc-950 border border-green-500 p-3 text-green-300 text-sm outline-none rounded">
-                            </div>
-                            <div>
-                                <label class="text-xs text-green-400 block mb-1">Passwort / Token</label>
-                                <input type="password" id="m1-pass" placeholder="••••••••" class="w-full bg-zinc-950 border border-green-500 p-3 text-green-300 text-sm outline-none rounded">
-                            </div>
-                            <button onclick="checkMission1('${diff}')" class="w-full bg-green-900 border border-green-400 py-3 hover:bg-green-400 hover:text-black transition font-bold uppercase tracking-wider rounded">
-                                Zugriff Anfordern
-                            </button>
-                        </div>
-                    </div>
-                `;
-            } else if (missionId === 2) {
-                tips = "Visueller Fake-Shop ('VENO'). Klicke dich durch den Shop, untersuche den Admin-Checkout oder manipuliere das Cookie/Token in der Konsole.";
-                visualInterfaceHtml = `
-                    <div class="bg-zinc-950 border border-green-600 rounded-xl overflow-hidden">
-                        <!-- Shop Header -->
-                        <div class="bg-black border-b border-green-800 p-4 flex justify-between items-center">
-                            <span class="font-bold text-green-300 tracking-wider">⚡ VENO APPAREL & JEWELRY [STORE v2]</span>
-                            <div class="flex items-center gap-4 text-xs">
-                                <span class="text-yellow-400">Rolle: <span id="shop-role">GUEST</span></span>
-                                <span class="border border-green-700 px-2 py-1 bg-zinc-900">Warenkorb: <span id="cart-count">0</span> Items</span>
-                            </div>
-                        </div>
-                        <!-- Shop Body -->
-                        <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="border border-green-900 p-4 bg-black rounded flex flex-col justify-between">
-                                <div>
-                                    <div class="text-xs text-green-500 mb-1">ITEM #01</div>
-                                    <h5 class="font-bold text-green-300">Pandora Silver Ring</h5>
-                                    <p class="text-xs text-green-400/70 my-2">Exklusives Schmuckstück aus der Reseller-Kollektion.</p>
-                                    <div class="text-sm font-bold text-yellow-400">€ 149.99</div>
-                                </div>
-                                <button onclick="addToCart()" class="mt-4 border border-green-600 py-1 text-xs hover:bg-green-500 hover:text-black transition font-bold">In den Warenkorb</button>
-                            </div>
-                            <div class="border border-green-900 p-4 bg-black rounded flex flex-col justify-between">
-                                <div>
-                                    <div class="text-xs text-green-500 mb-1">ITEM #02</div>
-                                    <h5 class="font-bold text-green-300">Levis Denim Jacket</h5>
-                                    <p class="text-xs text-green-400/70 my-2">Vintage Webware im Top-Zustand.</p>
-                                    <div class="text-sm font-bold text-yellow-400">€ 89.99</div>
-                                </div>
-                                <button onclick="addToCart()" class="mt-4 border border-green-600 py-1 text-xs hover:bg-green-500 hover:text-black transition font-bold">In den Warenkorb</button>
-                            </div>
-                            <!-- Admin Panel / Checkout Box -->
-                            <div class="border border-red-900 p-4 bg-red-950/20 rounded flex flex-col justify-between">
-                                <div>
-                                    <div class="text-xs text-red-400 mb-1">SECURE ADMIN CHECKOUT</div>
-                                    <h5 class="font-bold text-red-300">Root Control Panel</h5>
-                                    <p class="text-xs text-red-400/70 my-2">Nur für verifizierte Store-Administratoren freigegeben.</p>
-                                </div>
-                                <button onclick="checkMission2('${diff}')" class="mt-4 bg-red-950 border border-red-500 py-2 text-xs hover:bg-red-500 hover:text-black transition font-bold uppercase">
-                                    Admin-Bereich Entsperren
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else if (missionId === 3) {
-                tips = "Visuelles Smartphone. Nutze das Touchscreen-Keypad, um den alle 30 Sekunden rotierenden PIN einzugeben.";
-                enteredPinBuffer = "";
-                visualInterfaceHtml = `
-                    <div class="flex justify-center my-2">
-                        <!-- Fotorealistisches Smartphone -->
-                        <div class="w-72 bg-zinc-900 border-4 border-zinc-700 rounded-[40px] p-4 shadow-2xl relative">
-                            <!-- Speaker & Kamera Notch -->
-                            <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-24 h-4 bg-black rounded-b-xl flex justify-center items-center gap-2">
-                                <div class="w-2 h-2 bg-zinc-800 rounded-full"></div>
-                                <div class="w-3 h-1 bg-zinc-800 rounded-full"></div>
-                            </div>
-                            
-                            <!-- Statusleiste -->
-                            <div class="flex justify-between items-center text-[11px] text-zinc-400 mt-4 mb-2 px-2">
-                                <span>20:01</span>
-                                <span id="global-timer" class="text-red-400 font-bold">30s</span>
-                                <span>🔋 94%</span>
-                            </div>
-
-                            <!-- Phone Screen -->
-                            <div class="bg-gradient-to-b from-zinc-950 to-black border border-zinc-800 rounded-2xl p-4 text-center mb-4 min-h-[220px] flex flex-col justify-between">
-                                <div>
-                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Device Locked</div>
-                                    <div class="text-xs text-yellow-400 mt-1">Biometrie gesperrt (Zu viele Versuche)</div>
-                                </div>
-                                <div>
-                                    <div id="phone-display-dots" class="text-2xl text-green-400 tracking-widest my-2 font-mono">____</div>
-                                    <div id="phone-status-msg" class="text-[11px] text-red-400 h-4 font-bold">PIN eingeben</div>
-                                </div>
-                                <div class="text-[10px] text-zinc-600 bg-zinc-900/50 p-1 rounded">
-                                    📩 Neue Notification: "System PIN rotiert..."
-                                </div>
-                            </div>
-
-                            <!-- Touch Keypad -->
-                            <div class="grid grid-cols-3 gap-2 px-1">
-                                <button onclick="pressPhoneKey('1')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">1</button>
-                                <button onclick="pressPhoneKey('2')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">2</button>
-                                <button onclick="pressPhoneKey('3')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">3</button>
-                                <button onclick="pressPhoneKey('4')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">4</button>
-                                <button onclick="pressPhoneKey('5')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">5</button>
-                                <button onclick="pressPhoneKey('6')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">6</button>
-                                <button onclick="pressPhoneKey('7')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">7</button>
-                                <button onclick="pressPhoneKey('8')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">8</button>
-                                <button onclick="pressPhoneKey('9')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">9</button>
-                                <button onclick="pressPhoneKey('C')" class="bg-red-950/80 hover:bg-red-900 text-red-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center shadow">C</button>
-                                <button onclick="pressPhoneKey('0')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">0</button>
-                                <button onclick="pressPhoneKey('OK')" class="bg-green-950/80 hover:bg-green-900 text-green-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center shadow">OK</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            content.innerHTML = `
+        // --- MISSION 1: STRICT CHARACTER LOGIN ---
+        function renderMission1UI(container) {
+            container.innerHTML = `
                 <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
+                    <h3 class="text-lg font-bold text-green-300">Mission 01: Strict Character Login</h3>
+                    <button onclick="closeModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
+                </div>
+                <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400 flex justify-between items-center">
+                    <span>Regel: Es wird kein Freigabe-Schwindel akzeptiert. Die Box zeigt dir exakt an, welcher Buchstabe an welcher Position korrekt eingegeben wurde!</span>
+                    <span class="text-red-400 font-bold">Rotation in: <span id="global-timer" class="text-yellow-400">60s</span></span>
+                </div>
+                <div class="max-w-md mx-auto bg-black border border-green-600 p-6 rounded-xl glow-box space-y-4">
                     <div>
-                        <h3 class="text-lg font-bold text-green-300">Mission 0${missionId}</h3>
-                        <span class="text-xs ${diffColor}">Stufe: ${diffTitle} (Hardcore)</span>
+                        <label class="text-xs text-green-400 block mb-1">Benutzername prüfen</label>
+                        <input type="text" id="m1-user" oninput="evalMission1()" placeholder="Zeichen tippen..." class="w-full bg-zinc-950 border border-green-500 p-3 text-green-300 text-sm outline-none rounded font-mono">
+                        <div id="m1-user-feedback" class="text-xs mt-1 text-yellow-400 font-mono">Feedback: Noch keine Übereinstimmung</div>
                     </div>
-                    <button onclick="startMission(${missionId})" class="text-green-500 hover:text-white text-xs font-bold">[Zurück]</button>
+                    <div>
+                        <label class="text-xs text-green-400 block mb-1">Passwort prüfen</label>
+                        <input type="password" id="m1-pass" oninput="evalMission1()" placeholder="Zeichen tippen..." class="w-full bg-zinc-950 border border-green-500 p-3 text-green-300 text-sm outline-none rounded font-mono">
+                        <div id="m1-pass-feedback" class="text-xs mt-1 text-yellow-400 font-mono">Feedback: Noch keine Übereinstimmung</div>
+                    </div>
+                    <div id="m1-success-box" class="hidden text-center p-3 bg-green-950 border border-green-400 text-green-300 font-bold text-sm">
+                        ZUGRIFF GEKNACKT! Credentials perfekt abgeglichen.
+                    </div>
                 </div>
-                <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400">
-                    <span class="font-bold text-green-300">PROFI-HINWEIS:</span> ${tips}
-                </div>
-                ${visualInterfaceHtml}
             `;
         }
 
-        function generateFreshData() {
-            const randomUserNum = Math.floor(1000 + Math.random() * 9000);
-            const randomPinNum = Math.floor(1000 + Math.random() * 9000);
-            
-            dynamicLoginCreds = {
-                user: "operator_" + Math.floor(Math.random() * 100),
-                pass: "sec#" + randomUserNum
-            };
-            
-            dynamicSmartphonePin = randomPinNum.toString();
-            console.log(`[HARDCORE-DEBUG] Live Credentials -> User: ${dynamicLoginCreds.user} / Pass: ${dynamicLoginCreds.pass} | Smartphone PIN: ${dynamicSmartphonePin}`);
-        }
+        function evalMission1() {
+            const uInput = document.getElementById('m1-user').value;
+            const pInput = document.getElementById('m1-pass').value;
+            const uFb = document.getElementById('m1-user-feedback');
+            const pFb = document.getElementById('m1-pass-feedback');
 
-        function checkMission1(diff) {
-            const u = document.getElementById('m1-user').value;
-            const p = document.getElementById('m1-pass').value;
+            // Zeichenweises Feedback generieren
+            let uMatchStr = "";
+            for (let i = 0; i < dynamicSecretUser.length; i++) {
+                if (i < uInput.length && uInput[i] === dynamicSecretUser[i]) {
+                    uMatchStr += `[${uInput[i]}] `;
+                } else {
+                    uMatchStr += `_ `;
+                }
+            }
+            uFb.innerText = `User Positionen korrekt: ${uMatchStr} (Länge: ${dynamicSecretUser.length})`;
 
-            if (diff === 'easy') {
-                if (u.length > 3 && p.length > 3) {
-                    showSuccessScreen("Mission 01: Vault Login", "Standard");
+            let pMatchStr = "";
+            for (let i = 0; i < dynamicSecretPass.length; i++) {
+                if (i < pInput.length && pInput[i] === dynamicSecretPass[i]) {
+                    pMatchStr += `[${pInput[i]}] `;
                 } else {
-                    alert("Zugriff verweigert: Ungültige Länge.");
+                    pMatchStr += `_ `;
                 }
-            } else if (diff === 'medium') {
-                if (u === dynamicLoginCreds.user && p === dynamicLoginCreds.pass) {
-                    showSuccessScreen("Mission 01: Vault Login", "Erweitert (Rotation geknackt)");
-                } else {
-                    alert("Zugriff verweigert: Falsche Credentials oder abgelaufen!");
-                }
-            } else {
-                if ((u === dynamicLoginCreds.user && p === dynamicLoginCreds.pass) || u.includes("' OR 1=1")) {
-                    showSuccessScreen("Mission 01: Vault Login", "Hardcore Experte (WAF Bypass)");
-                } else {
-                    alert("WAF Firewall Alarm! Zugriff permanent gesperrt für diesen Versuch.");
-                }
+            }
+            pFb.innerText = `Pass Positionen korrekt: ${pMatchStr} (Länge: ${dynamicSecretPass.length})`;
+
+            if (uInput === dynamicSecretUser && pInput === dynamicSecretPass) {
+                document.getElementById('m1-success-box').classList.remove('hidden');
             }
         }
 
-        function addToCart() {
-            cartItems++;
-            const cartEl = document.getElementById('cart-count');
-            if (cartEl) cartEl.innerText = cartItems;
+        // --- MISSION 2: VENO E-COMMERCE SHOP ---
+        function renderMission2UI(container) {
+            container.innerHTML = `
+                <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
+                    <h3 class="text-lg font-bold text-green-300">Mission 02: VENO E-Commerce Shop</h3>
+                    <button onclick="closeModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
+                </div>
+                <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400 flex justify-between items-center">
+                    <span>Echte visuelle Shop-Oberfläche für Pandora, Levis, Nike & Puma. Keine Code-Eingaben hier – nutze deine eigenen Angriffe (Proxy/API/Cookies).</span>
+                    <span class="text-red-400 font-bold">Rotation in: <span id="global-timer" class="text-yellow-400">60s</span></span>
+                </div>
+                
+                <div class="bg-zinc-950 border border-green-600 rounded-xl overflow-hidden p-4">
+                    <!-- Shop Navbar -->
+                    <div class="flex flex-col md:flex-row justify-between items-center border-b border-green-900 pb-3 mb-4 gap-2">
+                        <div class="font-bold text-green-300 text-lg tracking-wider">⚡ VENO STORE [APPAREL & JEWELRY]</div>
+                        <div class="flex items-center gap-4 text-xs">
+                            <span class="text-zinc-400">Marken: <strong class="text-green-400">Pandora | Levis | Nike | Puma</strong></span>
+                            <div class="border border-green-700 px-3 py-1 bg-black text-yellow-400 font-bold rounded">
+                                Warenkorb: <span id="shop-cart-count">0</span> Items (€ <span id="shop-cart-total">0.00</span>)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        ${shopProducts.map(p => `
+                            <div class="border border-green-900 bg-black p-4 rounded flex flex-col justify-between">
+                                <div>
+                                    <div class="text-[10px] text-green-500 mb-1 uppercase tracking-widest">${p.brand} //${p.category}</div>
+                                    <h4 class="font-bold text-green-200 text-sm mb-1">${p.name}</h4>
+                                    <div class="text-xs text-zinc-400 mb-3">Lagerbestand: ${p.stock} Stk.</div>
+                                    <div class="text-base font-bold text-yellow-400">€ ${p.price.toFixed(2)}</div>
+                                </div>
+                                <button onclick="addToShopCart(${p.id})" class="mt-4 border border-green-600 py-1.5 text-xs hover:bg-green-500 hover:text-black transition font-bold uppercase">
+                                    In den Warenkorb
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Checkout Area -->
+                    <div class="border border-zinc-800 bg-black p-4 rounded flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="text-xs text-zinc-400">
+                            Status: Kunden-Checkout aktiv. Keine versteckten UI-Buttons. Führe deine Manipulationen im Hintergrund aus.
+                        </div>
+                        <button onclick="triggerShopCheckout()" class="bg-green-950 border border-green-500 px-6 py-2.5 text-green-300 hover:bg-green-500 hover:text-black transition font-bold uppercase text-xs rounded">
+                            Zur Kasse gehen
+                        </button>
+                    </div>
+                </div>
+            `;
         }
 
-        function checkMission2(diff) {
-            if (diff === 'easy') {
-                if (cartItems >= 2) {
-                    showSuccessScreen("Mission 02: Veno Shop", "Standard Checkout");
-                } else {
-                    alert("Warenkorb leer! Füge mindestens 2 Artikel hinzu.");
-                }
-            } else if (diff === 'medium') {
-                const roleEl = document.getElementById('shop-role');
-                if (roleEl && roleEl.innerText === 'ADMIN') {
-                    showSuccessScreen("Mission 02: Veno Shop", "Erweitert (Rollenwechsel)");
-                } else {
-                    alert("Zugriff verweigert: Nur Administratoren erlaubt. Manipuliere den Status.");
-                }
-            } else {
-                // Hardcore Experte: Verlangt session cookie bypass / console check
-                let userRoleToken = prompt("Gib den simulierten Administrator Session-Token ein (z.B. role=admin):");
-                if (userRoleToken && (userRoleToken.includes("admin") || userRoleToken.includes("root"))) {
-                    document.getElementById('shop-role').innerText = 'ADMIN';
-                    showSuccessScreen("Mission 02: Veno Shop", "Hardcore Experte (Session Hijacked)");
-                } else {
-                    alert("Kritischer Fehler: Ungültiger Security-Token.");
-                }
+        function addToShopCart(productId) {
+            const product = shopProducts.find(p => p.id === productId);
+            if (product) {
+                shopCart.push(product);
+                updateShopCartUI();
             }
+        }
+
+        function updateShopCartUI() {
+            const countEl = document.getElementById('shop-cart-count');
+            const totalEl = document.getElementById('shop-cart-total');
+            if (countEl && totalEl) {
+                countEl.innerText = shopCart.length;
+                let total = shopCart.reduce((sum, item) => sum + item.price, 0);
+                totalEl.innerText = total.toFixed(2);
+            }
+        }
+
+        function triggerShopCheckout() {
+            if (shopCart.length === 0) {
+                alert("Warenkorb ist leer! Bitte wähle Produkte aus.");
+                return;
+            }
+            alert("Checkout-Prozess aufgerufen. Standard-Käufer-Session aktiv.");
+        }
+
+        // --- MISSION 3: TARGET SMARTPHONE ---
+        function renderMission3UI(container) {
+            enteredPinBuffer = "";
+            container.innerHTML = `
+                <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
+                    <h3 class="text-lg font-bold text-green-300">Mission 03: Target Smartphone Lock</h3>
+                    <button onclick="closeModal()" class="text-green-500 hover:text-white font-bold">[X]</button>
+                </div>
+                <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400 flex justify-between items-center">
+                    <span>Visuelles Smartphone mit Touchscreen-Keypad und 60-Sekunden PIN-Rotation.</span>
+                    <span class="text-red-400 font-bold">Rotation in: <span id="global-timer" class="text-yellow-400">60s</span></span>
+                </div>
+
+                <div class="flex justify-center my-2">
+                    <div class="w-72 bg-zinc-900 border-4 border-zinc-700 rounded-[40px] p-4 shadow-2xl relative">
+                        <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-24 h-4 bg-black rounded-b-xl flex justify-center items-center gap-2">
+                            <div class="w-2 h-2 bg-zinc-800 rounded-full"></div>
+                            <div class="w-3 h-1 bg-zinc-800 rounded-full"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-[11px] text-zinc-400 mt-4 mb-2 px-2">
+                            <span>21:00</span>
+                            <span class="text-red-400 font-bold">60s</span>
+                            <span>🔋 98%</span>
+                        </div>
+
+                        <div class="bg-gradient-to-b from-zinc-950 to-black border border-zinc-800 rounded-2xl p-4 text-center mb-4 min-h-[220px] flex flex-col justify-between">
+                            <div>
+                                <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Device Locked</div>
+                                <div class="text-xs text-yellow-400 mt-1">Sicherer PIN-Lock aktiv</div>
+                            </div>
+                            <div>
+                                <div id="phone-display-dots" class="text-2xl text-green-400 tracking-widest my-2 font-mono">____</div>
+                                <div id="phone-status-msg" class="text-[11px] text-red-400 h-4 font-bold">PIN eingeben</div>
+                            </div>
+                            <div class="text-[10px] text-zinc-600 bg-zinc-900/50 p-1 rounded">
+                                📩 System: PIN rotiert alle 60s
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 px-1">
+                            <button onclick="pressPhoneKey('1')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">1</button>
+                            <button onclick="pressPhoneKey('2')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">2</button>
+                            <button onclick="pressPhoneKey('3')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">3</button>
+                            <button onclick="pressPhoneKey('4')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">4</button>
+                            <button onclick="pressPhoneKey('5')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">5</button>
+                            <button onclick="pressPhoneKey('6')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">6</button>
+                            <button onclick="pressPhoneKey('7')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">7</button>
+                            <button onclick="pressPhoneKey('8')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">8</button>
+                            <button onclick="pressPhoneKey('9')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">9</button>
+                            <button onclick="pressPhoneKey('C')" class="bg-red-950/80 hover:bg-red-900 text-red-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center shadow">C</button>
+                            <button onclick="pressPhoneKey('0')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3.5 rounded-full text-base font-bold shadow">0</button>
+                            <button onclick="pressPhoneKey('OK')" class="bg-green-950/80 hover:bg-green-900 text-green-300 p-3.5 rounded-full text-xs font-bold flex items-center justify-center shadow">OK</button>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         function pressPhoneKey(key) {
@@ -392,15 +371,12 @@
                 enteredPinBuffer = "";
                 statusMsg.innerText = "PIN zurückgesetzt";
             } else if (key === 'OK') {
-                if (enteredPinBuffer === dynamicSmartphonePin || enteredPinBuffer === "1234") {
+                if (enteredPinBuffer === dynamicSmartphonePin) {
                     statusMsg.className = "text-[11px] text-green-400 h-4 font-bold";
                     statusMsg.innerText = "ZUGRIFF ERLAUBT!";
-                    setTimeout(() => {
-                        showSuccessScreen("Mission 03: Target Smartphone", "Geknackt");
-                    }, 600);
                 } else {
                     statusMsg.className = "text-[11px] text-red-400 h-4 font-bold";
-                    statusMsg.innerText = "Falscher PIN! Rate-Limiter aktiv.";
+                    statusMsg.innerText = "Falscher PIN!";
                     enteredPinBuffer = "";
                 }
             } else {
@@ -415,55 +391,6 @@
                 displayStr += i < enteredPinBuffer.length ? "*" : "_";
             }
             if (dots) dots.innerText = displayStr;
-        }
-
-        function showSuccessScreen(missionName, levelName) {
-            if (globalTimerInterval) clearInterval(globalTimerInterval);
-            const modalContent = document.getElementById('modal-content');
-            
-            modalContent.innerHTML = `
-                <div class="text-center space-y-4">
-                    <h2 class="text-2xl font-bold text-green-400 glow-text">[ MISSION COMPLETED ]</h2>
-                    <p class="text-lg text-green-300 font-bold">Schutzwall erfolgreich durchbrochen!</p>
-                    <div class="border border-green-500 p-3 bg-black text-xs text-green-400 inline-block rounded">
-                        Mission: ${missionName} <br>
-                        Modus: <span class="text-yellow-400 uppercase font-bold">${levelName}</span>
-                    </div>
-                    <div class="my-4">
-                        <canvas id="successChart" width="400" height="140" class="mx-auto"></canvas>
-                    </div>
-                    <button onclick="closeModal()" class="bg-green-950 border border-green-500 px-6 py-2 text-green-300 hover:bg-green-500 hover:text-black transition uppercase font-bold rounded">
-                        Zurück zum Dashboard
-                    </button>
-                </div>
-            `;
-
-            setTimeout(() => {
-                const ctx = document.getElementById('successChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Recon', 'Injection', 'Bypass', 'Root Access'],
-                        datasets: [{
-                            label: 'Hardcore Hacker Rating',
-                            data: [25, 55, 85, 100],
-                            borderColor: '#00ff66',
-                            backgroundColor: 'rgba(0, 255, 102, 0.15)',
-                            borderWidth: 2.5,
-                            fill: true,
-                            tension: 0.3
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: { legend: { labels: { color: '#00ff66', font: { family: 'Share Tech Mono' } } } },
-                        scales: {
-                            x: { ticks: { color: '#00ff66' }, grid: { color: '#002205' } },
-                            y: { ticks: { color: '#00ff66' }, grid: { color: '#002205' } }
-                        }
-                    }
-                });
-            }, 100);
         }
     </script>
 </body>
