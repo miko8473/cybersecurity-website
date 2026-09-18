@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Test Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            900: '#030712',
+                            800: '#0b0f19',
+                            700: '#111827',
+                            600: '#1f2937',
+                            500: '#374151',
+                            green: '#10b981',
+                            neon: '#00ff66',
+                            cyan: '#06b6d4',
+                            purple: '#8b5cf6',
+                            red: '#ef4444'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['Courier New', Courier, monospace]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+        }
+        .code-font {
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5), 0 0 20px rgba(0, 255, 102, 0.2);
+        }
+        .neon-border {
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+        }
+        .neon-border-cyan {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+        }
+        .matrix-bg {
+            background: linear-gradient(180deg, rgba(3,7,18,0.95) 0%, rgba(11,15,25,0.98) 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-cyber-neon selection:text-black">
+
+    <header class="border-b border-cyber-green/30 bg-cyber-800/80 backdrop-blur sticky top-0 z-40 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
+            <div class="w-4 h-4 bg-cyber-neon rounded-full animate-pulse shadow-[0_0_10px_#00ff66]"></div>
+            <h1 class="text-xl md:text-2xl font-bold code-font text-cyber-neon tracking-wider">Cyber Security Test Website</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span id="global-timer" class="hidden text-xs code-font bg-cyber-red/20 text-cyber-red px-3 py-1 rounded border border-cyber-red/40 animate-pulse"></span>
+            <button onclick="openPowerShell()" class="flex items-center space-x-2 bg-cyber-700 hover:bg-cyber-600 text-cyber-neon border border-cyber-green/50 px-4 py-2 rounded-lg code-font transition shadow-[0_0_10px_rgba(0,255,102,0.1)] active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>PowerShell</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8">
+
+        <!-- VIEW: HOME (Dashboard & Tasks) -->
+        <div id="view-home" class="space-y-8">
+            <!-- Hero Section -->
+            <div class="bg-cyber-700/50 border border-cyber-green/30 rounded-2xl p-6 md:p-10 relative overflow-hidden neon-border">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl code-font text-cyber-neon select-none pointer-events-none">0101</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 code-font">
+                    Willkommen im <span class="text-cyber-neon">Hacker Lab</span>
+                </h2>
+                <p class="text-gray-300 text-lg max-w-3xl leading-relaxed">
+                    Hallo das ist eine test website für deine fähigkeiten mit schwierigkeitsgraden. Teste und trainiere deine Pentesting-Fähigkeiten in einer sicheren, simulierten Umgebung. Wähle eine Mission, studiere die Tipps und beweise dein Können.
+                </p>
+            </div>
+
+            <!-- Task Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Task 1: Login System -->
+                <div class="bg-cyber-800 border border-cyber-green/40 rounded-xl p-6 flex flex-col justify-between hover:border-cyber-neon transition shadow-lg group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs code-font bg-cyber-green/20 text-cyber-neon px-2.5 py-1 rounded border border-cyber-green/40">Aufgabe 01</span>
+                            <span class="text-xs text-gray-400 code-font">Auth & SQLi</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyber-neon transition">Login-System</h3>
+                        <p class="text-gray-400 text-sm mb-4">Bypasse die Authentifizierung via einfacher Länge, SQL-Injektion oder Brute-Force.</p>
+                        
+                        <!-- Tips Box -->
+                        <div class="bg-cyber-900/80 rounded-lg p-3 text-xs code-font text-gray-300 border border-gray-800 mb-6 space-y-1">
+                            <p class="text-cyber-cyan font-bold">💡 Tipps:</p>
+                            <p>• Einfach: Gib >3 Zeichen ein.</p>
+                            <p>• Mittel: SQLi wie <code class="text-cyber-neon">' OR 1=1 --</code> oder automatisierter Brute-Force (Credentials rotieren alle 60s!).</p>
+                            <p>• Experte: Firewall umgehen & Payload encoden.</p>
+                        </div>
+                    </div>
+                    <button onclick="openDifficultyModal(1)" class="w-full bg-cyber-green/20 hover:bg-cyber-green hover:text-black text-cyber-neon font-bold py-3 rounded-lg border border-cyber-green transition code-font shadow-[0_0_10px_rgba(0,255,102,0.1)]">
+                        MISSION STARTEN
+                    </button>
+                </div>
+
+                <!-- Task 2: E-Commerce Shop -->
+                <div class="bg-cyber-800 border border-cyber-cyan/40 rounded-xl p-6 flex flex-col justify-between hover:border-cyber-cyan transition shadow-lg group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs code-font bg-cyber-cyan/20 text-cyber-cyan px-2.5 py-1 rounded border border-cyber-cyan/40">Aufgabe 02</span>
+                            <span class="text-xs text-gray-400 code-font">DDoS & Takeover</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyber-cyan transition">E-Commerce Shop</h3>
+                        <p class="text-gray-400 text-sm mb-4">Bring die Website zum Absturz (DDoS/Stress-Test) oder übernehme die Admin-Kontrolle.</p>
+                        
+                        <!-- Tips Box -->
+                        <div class="bg-cyber-900/80 rounded-lg p-3 text-xs code-font text-gray-300 border border-gray-800 mb-6 space-y-1">
+                            <p class="text-cyber-cyan font-bold">💡 Tipps:</p>
+                            <p>• Einfach: Klicke schnell auf "DDoS Attack" um den Server sofort zu fluten.</p>
+                            <p>• Mittel: Paket-Flooding mit zeitgesteuerten Intervallen (50 Anfragen).</p>
+                            <p>• Experte: Rate-Limiter und WAF-Regeln durch Paketfragmentierung umgehen.</p>
+                        </div>
+                    </div>
+                    <button onclick="openDifficultyModal(2)" class="w-full bg-cyber-cyan/20 hover:bg-cyber-cyan hover:text-black text-cyber-cyan font-bold py-3 rounded-lg border border-cyber-cyan transition code-font shadow-[0_0_10px_rgba(6,182,212,0.1)]">
+                        MISSION STARTEN
+                    </button>
+                </div>
+
+                <!-- Task 3: Virtual Smartphone -->
+                <div class="bg-cyber-800 border border-cyber-purple/40 rounded-xl p-6 flex flex-col justify-between hover:border-cyber-purple transition shadow-lg group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs code-font bg-cyber-purple/20 text-cyber-purple px-2.5 py-1 rounded border border-cyber-purple/40">Aufgabe 03</span>
+                            <span class="text-xs text-gray-400 code-font">PIN & Bruteforce</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyber-purple transition">Virtuelles Smartphone</h3>
+                        <p class="text-gray-400 text-sm mb-4">Knacke den 4-stelligen PIN des Smartphones via Brute-Force oder logischem Bypass.</p>
+                        
+                        <!-- Tips Box -->
+                        <div class="bg-cyber-900/80 rounded-lg p-3 text-xs code-font text-gray-300 border border-gray-800 mb-6 space-y-1">
+                            <p class="text-cyber-cyan font-bold">💡 Tipps:</p>
+                            <p>• Einfach: Voreingestellter Standard-PIN (<code class="text-cyber-purple">1234</code>).</p>
+                            <p>• Mittel: Der PIN ändert sich alle 60 Sekunden; nutze den PowerShell-Bruteforce-Befehl.</p>
+                            <p>• Experte: Hardware-Sicherheits-Enklave mit Cooldown-Sperre überlisten.</p>
+                        </div>
+                    </div>
+                    <button onclick="openDifficultyModal(3)" class="w-full bg-cyber-purple/20 hover:bg-cyber-purple hover:text-white text-cyber-purple font-bold py-3 rounded-lg border border-cyber-purple transition code-font shadow-[0_0_10px_rgba(139,92,246,0.1)]">
+                        MISSION STARTEN
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: TASK 1 (Login System) -->
+        <div id="view-task-1" class="hidden max-w-xl mx-auto bg-cyber-800 border border-cyber-green/50 rounded-2xl p-8 neon-border shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-cyber-neon code-font">🔐 Login-System (Level: <span id="t1-diff-name">-</span>)</h3>
+                <button onclick="switchView('home')" class="text-gray-400 hover:text-white code-font text-sm">[ Zurück ]</button>
+            </div>
+            
+            <div id="t1-warning" class="hidden mb-4 p-3 bg-cyber-red/20 border border-cyber-red text-cyber-red text-xs code-font rounded"></div>
+            <div id="t1-success-msg" class="hidden mb-4 p-3 bg-cyber-green/20 border border-cyber-green text-cyber-neon text-xs code-font rounded"></div>
+
+            <form id="t1-form" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs code-font text-gray-400 mb-1">BENUTZERNAME</label>
+                    <input type="text" id="t1-user" class="w-full bg-cyber-900 border border-gray-700 rounded-lg p-3 text-white code-font focus:border-cyber-neon focus:outline-none" placeholder="Benutzername eingeben...">
+                </div>
+                <div>
+                    <label class="block text-xs code-font text-gray-400 mb-1">PASSWORT</label>
+                    <input type="password" id="t1-pass" class="w-full bg-cyber-900 border border-gray-700 rounded-lg p-3 text-white code-font focus:border-cyber-neon focus:outline-none" placeholder="Passwort eingeben...">
+                </div>
+                <button type="submit" class="w-full bg-cyber-green text-black font-bold py-3 rounded-lg code-font hover:bg-emerald-400 transition shadow-[0_0_15px_rgba(0,255,102,0.3)]">
+                    AUTHENTIFIZIEREN
+                </button>
+            </form>
+            <div class="mt-4 text-center text-xs code-font text-gray-500" id="t1-hint-footer"></div>
+        </div>
+
+        <!-- VIEW: TASK 2 (E-Commerce Shop) -->
+        <div id="view-task-2" class="hidden max-w-3xl mx-auto bg-cyber-800 border border-cyber-cyan/50 rounded-2xl p-8 neon-border-cyan shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-cyber-cyan code-font">🛒 CyberShop v1.0 (Level: <span id="t2-diff-name">-</span>)</h3>
+                <button onclick="switchView('home')" class="text-gray-400 hover:text-white code-font text-sm">[ Zurück ]</button>
+            </div>
+
+            <!-- Shop Products / Target -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="bg-cyber-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-white">Quantum Server Node</h4>
+                        <p class="text-xs text-gray-400">Status: <span id="server-status" class="text-cyber-green font-bold">ONLINE (100%)</span></p>
+                    </div>
+                    <span class="text-cyber-cyan font-bold code-font">€999.99</span>
+                </div>
+                <div class="bg-cyber-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-white">Neural Net Key</h4>
+                        <p class="text-xs text-gray-400">Admin Access Token</p>
+                    </div>
+                    <span class="text-cyber-cyan font-bold code-font">LOCKED</span>
+                </div>
+            </div>
+
+            <!-- Attack Controls -->
+            <div class="bg-cyber-900/60 p-4 rounded-xl border border-gray-800 space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs code-font text-gray-300">STRESS TEST / ATTACK VECTOR</span>
+                    <span id="t2-load-counter" class="text-xs code-font text-cyber-cyan">Load: 0%</span>
+                </div>
+                <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                    <div id="t2-progress-bar" class="bg-cyber-cyan h-full w-0 transition-all duration-300"></div>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="executeDDoSAttack()" class="flex-1 bg-cyber-red/20 hover:bg-cyber-red hover:text-white text-cyber-red border border-cyber-red/50 py-3 rounded-lg font-bold code-font transition">
+                        ⚡ DDoS ATTACKE STARTEN
+                    </button>
+                    <button onclick="executeAdminTakeover()" class="flex-1 bg-cyber-cyan/20 hover:bg-cyber-cyan hover:text-black text-cyber-cyan border border-cyber-cyan/50 py-3 rounded-lg font-bold code-font transition">
+                        🔑 ADMIN TAKEOVER
+                    </button>
+                </div>
+            </div>
+            <div id="t2-msg" class="mt-4 text-center text-xs code-font text-gray-400"></div>
+        </div>
+
+        <!-- VIEW: TASK 3 (Virtual Smartphone) -->
+        <div id="view-task-3" class="hidden max-w-sm mx-auto bg-cyber-900 border-4 border-cyber-purple/50 rounded-[40px] p-6 shadow-[0_0_30px_rgba(139,92,246,0.3)] relative">
+            <div class="absolute top-2 left-1/2 -transform -translate-x-1/2 w-24 h-4 bg-black rounded-b-xl"></div>
+            
+            <div class="flex justify-between items-center mb-6 pt-4 px-2">
+                <span class="text-xs code-font text-cyber-purple">📱 SECURE_OS</span>
+                <button onclick="switchView('home')" class="text-gray-400 hover:text-white text-xs code-font">[X]</button>
+            </div>
+
+            <div class="text-center mb-8">
+                <div class="text-3xl mb-2">🔒</div>
+                <h3 class="text-lg font-bold text-white code-font">PIN EINGEBEN</h3>
+                <p class="text-xs text-gray-400 code-font mt-1">Level: <span id="t3-diff-name" class="text-cyber-purple">-</span></p>
+            </div>
+
+            <!-- PIN Display -->
+            <div class="bg-cyber-800 rounded-xl p-4 mb-6 text-center border border-cyber-purple/30">
+                <div id="phone-pin-display" class="text-2xl tracking-[1em] font-bold text-cyber-purple code-font min-h-[36px]">____</div>
+            </div>
+
+            <!-- Keypad -->
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <button onclick="pressPhoneKey('1')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">1</button>
+                <button onclick="pressPhoneKey('2')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">2</button>
+                <button onclick="pressPhoneKey('3')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">3</button>
+                <button onclick="pressPhoneKey('4')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">4</button>
+                <button onclick="pressPhoneKey('5')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">5</button>
+                <button onclick="pressPhoneKey('6')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">6</button>
+                <button onclick="pressPhoneKey('7')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">7</button>
+                <button onclick="pressPhoneKey('8')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">8</button>
+                <button onclick="pressPhoneKey('9')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">9</button>
+                <button onclick="clearPhonePin()" class="bg-cyber-red/20 text-cyber-red hover:bg-cyber-red hover:text-white font-bold py-3 rounded-xl code-font border border-cyber-red/40 text-xs">C</button>
+                <button onclick="pressPhoneKey('0')" class="bg-cyber-800 hover:bg-cyber-700 text-white font-bold py-3 rounded-xl code-font border border-gray-700">0</button>
+                <button onclick="submitPhonePin()" class="bg-cyber-purple text-white font-bold py-3 rounded-xl code-font border border-cyber-purple hover:bg-purple-600 text-xs">OK</button>
+            </div>
+            <div id="phone-msg" class="text-center text-xs code-font text-gray-400"></div>
+        </div>
+
+        <!-- VIEW: SUCCESS SCREEN (Hacker Analytics Dashboard) -->
+        <div id="view-success" class="hidden max-w-4xl mx-auto space-y-8 animate-fade-in">
+            <div class="bg-cyber-800 border-2 border-cyber-green rounded-3xl p-8 text-center neon-glow relative overflow-hidden">
+                <div class="absolute inset-0 bg-cyber-green/5 pointer-events-none"></div>
+                <div class="inline-block p-4 bg-cyber-green/20 rounded-full text-cyber-neon mb-4 border border-cyber-green animate-bounce text-3xl">🏆</div>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-cyber-neon code-font mb-2">ERFOLGREICHE AUFGABE ABGESCHLOSSEN!</h2>
+                <p class="text-gray-300 text-lg code-font">Mission erfolgreich infiltriert.</p>
+                <div class="mt-4 inline-block bg-cyber-900 border border-cyber-green/50 px-6 py-2 rounded-full text-white code-font">
+                    STATUS: <span id="success-level-badge" class="text-cyber-neon font-bold"></span>
+                </div>
+            </div>
+
+            <!-- Hacker Analytics Charts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cyber-800 border border-cyber-green/30 rounded-2xl p-6">
+                    <h3 class="text-sm code-font text-gray-400 mb-4">INFILTRATIONS-GESCHWINDIGKEIT</h3>
+                    <div class="h-64 flex items-center justify-center">
+                        <canvas id="chartSpeed"></canvas>
+                    </div>
+                </div>
+                <div class="bg-cyber-800 border border-cyber-cyan/30 rounded-2xl p-6">
+                    <h3 class="text-sm code-font text-gray-400 mb-4">SCHWACHSTELLEN-ANALYSE</h3>
+                    <div class="h-64 flex items-center justify-center">
+                        <canvas id="chartVuln"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button onclick="switchView('home')" class="bg-cyber-green text-black font-bold px-8 py-4 rounded-xl code-font hover:bg-emerald-400 transition shadow-[0_0_20px_rgba(0,255,102,0.4)]">
+                    WEITERE MISSION WÄHLEN
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL: DIFFICULTY SELECTOR -->
+    <div id="diff-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cyber-800 border border-cyber-green/50 rounded-2xl max-w-md w-full p-6 neon-border space-y-6">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white code-font">SCHWIRIGKEITSGRAD WÄHLEN</h3>
+                <button onclick="closeDifficultyModal()" class="text-gray-400 hover:text-white code-font">[X]</button>
+            </div>
+            <div class="space-y-3">
+                <button onclick="selectDifficulty('einfach')" class="w-full text-left bg-cyber-900 hover:bg-cyber-700 border border-cyber-green/30 hover:border-cyber-green p-4 rounded-xl transition group">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-cyber-green code-font">Keine Sicherheit (Einfach)</span>
+                        <span class="text-xs text-gray-400 group-hover:text-white">Stufe 1</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1">Sehr simpel, minimale Validierung.</p>
+                </button>
+                <button onclick="selectDifficulty('mittel')" class="w-full text-left bg-cyber-900 hover:bg-cyber-700 border border-cyber-cyan/30 hover:border-cyber-cyan p-4 rounded-xl transition group">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-cyber-cyan code-font">Mittel Sicherheit</span>
+                        <span class="text-xs text-gray-400 group-hover:text-white">Stufe 2</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1">Erfordert SQLi, Brute-Force & 60s State-Rotation.</p>
+                </button>
+                <button onclick="selectDifficulty('experte')" class="w-full text-left bg-cyber-900 hover:bg-cyber-700 border border-cyber-red/30 hover:border-cyber-red p-4 rounded-xl transition group">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-cyber-red code-font">Experte</span>
+                        <span class="text-xs text-gray-400 group-hover:text-white">Stufe 3</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1">Starke Firewall, WAF, Logik-Bypass erforderlich.</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- POWERSHELL TERMINAL MODAL -->
+    <div id="powershell-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex flex-col p-4 md:p-10">
+        <div class="max-w-4xl w-full mx-auto bg-black border border-cyber-green rounded-xl overflow-hidden flex flex-col h-[80vh] shadow-[0_0_30px_rgba(0,255,102,0.3)]">
+            <!-- Terminal Header -->
+            <div class="bg-cyber-800 px-4 py-2 border-b border-cyber-green/30 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="text-xs code-font text-cyber-neon ml-2">Windows PowerShell [Version 10.0.22621.3527]</span>
+                </div>
+                <button onclick="closePowerShell()" class="text-gray-400 hover:text-white code-font text-sm">[X Schließen]</button>
+            </div>
+            <!-- Terminal Output Area -->
+            <div id="ps-output" class="flex-1 p-4 overflow-y-auto code-font text-sm text-cyber-neon space-y-2 bg-black">
+                <p>Windows PowerShell</p>
+                <p>Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.</p>
+                <p class="text-gray-500">Geben Sie 'help' oder 'hilfe' ein, um verfügbare Automatisierungs-Befehle anzuzeigen.</p>
+                <br>
+            </div>
+            <!-- Terminal Input -->
+            <div class="bg-cyber-900 border-t border-cyber-green/30 p-3 flex items-center space-x-2">
+                <span class="text-cyber-green code-font font-bold">PS C:\Lab></span>
+                <input type="text" id="ps-input" onkeydown="handlePSKey(event)" class="flex-1 bg-transparent text-white code-font focus:outline-none" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global State
+        let currentTask = null;
+        let currentDifficulty = 'einfach';
+        let secretState = {
+            t1User: 'admin',
+            t1Pass: 'secure123',
+            t3Pin: '1234',
+            rotationTimeLeft: 60
+        };
+        let globalTimerInterval = null;
+        let phonePinInput = '';
+        let chartsInstance = { speed: null, vuln: null };
+
+        // 60-Second Rotation Timer for Medium / Expert
+        function startGlobalTimer() {
+            clearInterval(globalTimerInterval);
+            secretState.rotationTimeLeft = 60;
+            const timerEl = document.getElementById('global-timer');
+            timerEl.classList.remove('hidden');
+
+            globalTimerInterval = setInterval(() => {
+                secretState.rotationTimeLeft--;
+                timerEl.innerText = `⚠️ CREDENTIALS ROTIEREN IN: ${secretState.rotationTimeLeft}s`;
+
+                if (secretState.rotationTimeLeft <= 0) {
+                    secretState.rotationTimeLeft = 60;
+                    // Rotate credentials randomly for medium/expert
+                    const randomNum = Math.floor(1000 + Math.random() * 9000);
+                    secretState.t1Pass = 'pwd_' + randomNum;
+                    secretState.t3Pin = String(Math.floor(1000 + Math.random() * 9000));
+                    console.log("[AUTOMATION DEBUG] Credentials rotated:", secretState);
+                }
+            }, 1000);
+        }
+
+        function stopGlobalTimer() {
+            clearInterval(globalTimerInterval);
+            document.getElementById('global-timer').classList.add('hidden');
+        }
+
+        // Navigation & Modals
+        function switchView(viewName) {
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-task-1').classList.add('hidden');
+            document.getElementById('view-task-2').classList.add('hidden');
+            document.getElementById('view-task-3').classList.add('hidden');
+            document.getElementById('view-success').classList.add('hidden');
+
+            if (viewName === 'home') {
+                document.getElementById('view-home').classList.remove('hidden');
+                stopGlobalTimer();
+            } else if (viewName === 'success') {
+                document.getElementById('view-success').classList.remove('hidden');
+                stopGlobalTimer();
+                renderSuccessCharts();
+            } else {
+                document.getElementById(`view-task-${viewName}`).classList.remove('hidden');
+            }
+        }
+
+        function openDifficultyModal(taskNumber) {
+            currentTask = taskNumber;
+            document.getElementById('diff-modal').classList.remove('hidden');
+        }
+
+        function closeDifficultyModal() {
+            document.getElementById('diff-modal').classList.add('hidden');
+        }
+
+        function selectDifficulty(diff) {
+            currentDifficulty = diff;
+            closeDifficultyModal();
+
+            if (currentDifficulty === 'mittel' || currentDifficulty === 'experte') {
+                startGlobalTimer();
+            } else {
+                stopGlobalTimer();
+            }
+
+            if (currentTask === 1) {
+                setupTask1();
+                switchView('1');
+            } else if (currentTask === 2) {
+                setupTask2();
+                switchView('2');
+            } else if (currentTask === 3) {
+                setupTask3();
+                switchView('3');
+            }
+        }
+
+        // --- TASK 1: LOGIN SYSTEM LOGIC ---
+        function setupTask1() {
+            document.getElementById('t1-diff-name').innerText = currentDifficulty.toUpperCase();
+            document.getElementById('t1-user').value = '';
+            document.getElementById('t1-pass').value = '';
+            document.getElementById('t1-warning').classList.add('hidden');
+            document.getElementById('t1-success-msg').classList.add('hidden');
+
+            const footer = document.getElementById('t1-hint-footer');
+            if (currentDifficulty === 'einfach') {
+                footer.innerText = "Regel: Benutzername & Passwort müssen nur > 3 Zeichen lang sein.";
+            } else if (currentDifficulty === 'mittel') {
+                footer.innerText = "Regel: SQL-Injektion erlaubt oder Brute-Force nutzen (Credentials rotieren alle 60s).";
+            } else {
+                footer.innerText = "Regel: Starke Firewall aktiv. Payload muss verschleiert oder Logik-Bypass genutzt werden.";
+            }
+        }
+
+        function handleLoginSubmit(event) {
+            event.preventDefault();
+            const user = document.getElementById('t1-user').value;
+            const pass = document.getElementById('t1-pass').value;
+            const warningEl = document.getElementById('t1-warning');
+            
+            warningEl.classList.add('hidden');
+
+            let success = false;
+
+            if (currentDifficulty === 'einfach') {
+                if (user.length > 3 && pass.length > 3) {
+                    success = true;
+                } else {
+                    showWarning(warningEl, "Fehler: Benutzername und Passwort müssen jeweils mehr als 3 Zeichen lang sein!");
+                }
+            } else if (currentDifficulty === 'mittel') {
+                if (user.includes("'") || pass.includes("'") || user.includes("OR 1=1") || (user === secretState.t1User && pass === secretState.t1Pass)) {
+                    success = true;
+                } else {
+                    showWarning(warningEl, "Zugriff verweigert! Falsche Credentials oder SQLi-Syntax. (Tipp: Prüfe PowerShell-Bruteforce)");
+                }
+            } else { // Experte
+                // Firewall check: blocks standard SQLi unless encoded/bypassed
+                if (user.toLowerCase().includes("union select") || user.includes("1=1") && !user.includes("/*bypass*/")) {
+                    showWarning(warningEl, "🔥 Firewall Alarm: SQL-Injektion erkannt und blockiert! Nutze Logik-Bypass.");
+                } else if (user === "admin" && pass === secretState.t1Pass || user.includes("/*bypass*/")) {
+                    success = true;
+                } else {
+                    showWarning(warningEl, "Firewall aktiv: Zugriff unautorisiert. Analysiere den Endpunkt.");
+                }
+            }
+
+            if (success) {
+                triggerSuccess('Login-System (' + currentDifficulty.toUpperCase() + ')');
+            }
+        }
+
+        function showWarning(el, text) {
+            el.innerText = text;
+            el.classList.remove('hidden');
+        }
+
+        // --- TASK 2: E-COMMERCE SHOP LOGIC ---
+        function setupTask2() {
+            document.getElementById('t2-diff-name').innerText = currentDifficulty.toUpperCase();
+            document.getElementById('t2-progress-bar').style.width = '0%';
+            document.getElementById('t2-load-counter').innerText = 'Load: 0%';
+            document.getElementById('server-status').innerText = 'ONLINE (100%)';
+            document.getElementById('server-status').className = 'text-cyber-green font-bold';
+            document.getElementById('t2-msg').innerText = '';
+        }
+
+        function executeDDoSAttack() {
+            const bar = document.getElementById('t2-progress-bar');
+            const statusEl = document.getElementById('server-status');
+            const msgEl = document.getElementById('t2-msg');
+            
+            let load = 0;
+            const targetLoad = currentDifficulty === 'einfach' ? 100 : (currentDifficulty === 'mittel' ? 100 : 85);
+            const speed = currentDifficulty === 'experte' ? 5 : 20;
+
+            const interval = setInterval(() => {
+                load += speed;
+                if (load > 100) load = 100;
+                bar.style.width = load + '%';
+                document.getElementById('t2-load-counter').innerText = `Load: ${load}%`;
+
+                if (load >= targetLoad) {
+                    clearInterval(interval);
+                    if (currentDifficulty === 'experte' && load < 100) {
+                        msgEl.innerText = "Firewall wehrt DDoS ab! Rate-Limiter aktiv. Nutze PowerShell-Scripting.";
+                    } else {
+                        statusEl.innerText = "CRASHED (0%) [OFFLINE]";
+                        statusEl.className = 'text-cyber-red font-bold animate-pulse';
+                        msgEl.innerText = "Server erfolgreich zum Absturz gebracht!";
+                        setTimeout(() => {
+                            triggerSuccess('E-Commerce DDoS (' + currentDifficulty.toUpperCase() + ')');
+                        }, 1200);
+                    }
+                }
+            }, 100);
+        }
+
+        function executeAdminTakeover() {
+            const msgEl = document.getElementById('t2-msg');
+            if (currentDifficulty === 'experte') {
+                msgEl.innerText = "WAF blockiert direkten Takeover. Nutze PowerShell Session-Hijacking.";
+            } else {
+                msgEl.innerText = "Admin-Token erfolgreich extrahiert!";
+                setTimeout(() => {
+                    triggerSuccess('E-Commerce Takeover (' + currentDifficulty.toUpperCase() + ')');
+                }, 1000);
+            }
+        }
+
+        // --- TASK 3: VIRTUAL SMARTPHONE LOGIC ---
+        function setupTask3() {
+            document.getElementById('t3-diff-name').innerText = currentDifficulty.toUpperCase();
+            phonePinInput = '';
+            updatePhoneDisplay();
+            document.getElementById('phone-msg').innerText = '';
+        }
+
+        function pressPhoneKey(digit) {
+            if (phonePinInput.length < 4) {
+                phonePinInput += digit;
+                updatePhoneDisplay();
+            }
+        }
+
+        function clearPhonePin() {
+            phonePinInput = '';
+            updatePhoneDisplay();
+        }
+
+        function updatePhoneDisplay() {
+            let displayStr = '';
+            for (let i = 0; i < 4; i++) {
+                displayStr += i < phonePinInput.length ? '•' : '_';
+            }
+            document.getElementById('phone-pin-display').innerText = displayStr;
+        }
+
+        function submitPhonePin() {
+            const msgEl = document.getElementById('phone-msg');
+            let correctPin = currentDifficulty === 'einfach' ? '1234' : secretState.t3Pin;
+
+            if (phonePinInput === correctPin) {
+                msgEl.innerText = "Smartphone unlocked!";
+                msgEl.className = "text-center text-xs code-font text-cyber-neon";
+                setTimeout(() => {
+                    triggerSuccess('Smartphone PIN (' + currentDifficulty.toUpperCase() + ')');
+                }, 1000);
+            } else {
+                msgEl.innerText = "Falscher PIN! Gerät gesperrt.";
+                msgEl.className = "text-center text-xs code-font text-cyber-red animate-bounce";
+                phonePinInput = '';
+                updatePhoneDisplay();
+            }
+        }
+
+        // --- SUCCESS & CHARTS ---
+        function triggerSuccess(levelName) {
+            document.getElementById('success-level-badge').innerText = levelName;
+            switchView('success');
+        }
+
+        function renderSuccessCharts() {
+            // Speed Chart
+            const ctxSpeed = document.getElementById('chartSpeed').getContext('2d');
+            if (chartsInstance.speed) chartsInstance.speed.destroy();
+            chartsInstance.speed = new Chart(ctxSpeed, {
+                type: 'line',
+                data: {
+                    labels: ['0s', '10s', '20s', '30s', '40s', '50s', '60s'],
+                    datasets: [{
+                        label: 'Infiltrations-Geschwindigkeit (KB/s)',
+                        data: [120, 350, 890, 1420, 2100, 3400, 4800],
+                        borderColor: '#00ff66',
+                        backgroundColor: 'rgba(0, 255, 102, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#fff', font: { family: 'Courier New' } } } },
+                    scales: {
+                        x: { ticks: { color: '#888' }, grid: { color: '#111' } },
+                        y: { ticks: { color: '#888' }, grid: { color: '#111' } }
+                    }
+                }
+            });
+
+            // Vulnerability Chart
+            const ctxVuln = document.getElementById('chartVuln').getContext('2d');
+            if (chartsInstance.vuln) chartsInstance.vuln.destroy();
+            chartsInstance.vuln = new Chart(ctxVuln, {
+                type: 'doughnut',
+                data: {
+                    labels: ['SQLi', 'BruteForce', 'DDoS', 'Bypass'],
+                    datasets: [{
+                        data: [35, 25, 25, 15],
+                        backgroundColor: ['#00ff66', '#06b6d4', '#8b5cf6', '#ef4444']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { color: '#fff', font: { family: 'Courier New' } } } }
+                }
+            });
+        }
+
+        // --- POWERSHELL SIMULATOR ---
+        function openPowerShell() {
+            document.getElementById('powershell-modal').classList.remove('hidden');
+            document.getElementById('ps-input').focus();
+        }
+
+        function closePowerShell() {
+            document.getElementById('powershell-modal').classList.add('hidden');
+        }
+
+        function handlePSKey(event) {
+            if (event.key === 'Enter') {
+                const inputEl = document.getElementById('ps-input');
+                const cmd = inputEl.value.trim();
+                const outputEl = document.getElementById('ps-output');
+
+                outputEl.innerHTML += `<p class="text-white"><span class="text-cyber-green">PS C:\\Lab></span> ${cmd}</p>`;
+                inputEl.value = '';
+
+                processPSCommand(cmd, outputEl);
+                outputEl.scrollTop = outputEl.scrollHeight;
+            }
+        }
+
+        function processPSCommand(cmd, outputEl) {
+            const lowerCmd = cmd.toLowerCase();
+
+            if (lowerCmd === 'help' || lowerCmd === 'hilfe') {
+                outputEl.innerHTML += `
+                    <p class="text-cyber-cyan">Verfügbare PowerShell-Automatisierungsbefehle:</p>
+                    <p>  - <code class="text-white">get-creds</code> : Zeigt aktuell rotierende Zugangsdaten (Login & PIN)</p>
+                    <p>  - <code class="text-white">brute-force -target login</code> : Führt automatisierten Login-Bruteforce aus</p>
+                    <p>  - <code class="text-white">ddos-flood -target shop</code> : Simuliert einen intensiven DDoS-Flooding-Angriff</p>
+                    <p>  - <code class="text-white">bypass-waf</code> : Generiert einen Firewall-Umgehungsheader</p>
+                    <p>  - <code class="text-white">cls</code> : Bereinigt das Terminal</p>
+                `;
+            } else if (lowerCmd === 'cls') {
+                outputEl.innerHTML = `<p>Windows PowerShell</p><p>Copyright (C) Microsoft Corporation.</p><br>`;
+            } else if (lowerCmd === 'get-creds') {
+                outputEl.innerHTML += `<p class="text-cyber-neon">[+] Aktives Passwort (Login): ${secretState.t1Pass}</p>`;
+                outputEl.innerHTML += `<p class="text-cyber-neon">[+] Aktiver Smartphone PIN: ${secretState.t3Pin}</p>`;
+            } else if (lowerCmd.includes('brute-force')) {
+                outputEl.innerHTML += `<p class="text-yellow-400">[*] Starte automatisierten Bruteforce-Scan...</p>`;
+                setTimeout(() => {
+                    outputEl.innerHTML += `<p class="text-cyber-neon">[+] Erfolg! Gültiges Passwort gefunden: ${secretState.t1Pass}</p>`;
+                    outputEl.scrollTop = outputEl.scrollHeight;
+                }, 800);
+            } else if (lowerCmd.includes('ddos-flood')) {
+                outputEl.innerHTML += `<p class="text-yellow-400">[*] Flute E-Commerce Shop mit 10.000 TCP-Paketen...</p>`;
+                setTimeout(() => {
+                    outputEl.innerHTML += `<p class="text-cyber-neon">[+] Server überlastet! Shop erfolgreich gecrasht.</p>`;
+                    outputEl.scrollTop = outputEl.scrollHeight;
+                }, 1000);
+            } else if (lowerCmd.includes('bypass-waf')) {
+                outputEl.innerHTML += `<p class="text-cyber-neon">[+] WAF-Bypass Payload generiert: <code class="bg-gray-800 px-1">/*bypass*/ UNION SELECT 1,2</code></p>`;
+            } else if (cmd !== '') {
+                outputEl.innerHTML += `<p class="text-red-450 text-cyber-red">Der Befehl '${cmd}' wurde nicht erkannt oder ist intern gesperrt. Tippe 'help'.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
