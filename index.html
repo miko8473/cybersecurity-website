@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security Test Website</title>
+    <title>Cyber Security Test Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -30,10 +30,10 @@
     <!-- Header -->
     <header class="flex flex-col md:flex-row justify-between items-center border-b border-green-500 pb-4 mb-6">
         <h1 class="text-2xl md:text-3xl font-bold tracking-wider glow-text uppercase">
-            // Cyber Security Test Website
+            // Cyber Security Test Lab [CTF]
         </h1>
         <div class="text-xs text-green-500 border border-green-800 px-3 py-1 bg-black">
-            STATUS: SECURE LAB ACTIVE
+            STATUS: ADVANCED LAB ACTIVE
         </div>
     </header>
 
@@ -42,9 +42,9 @@
         
         <!-- Welcome Section -->
         <div class="terminal-bg p-6 rounded glow-box mb-8">
-            <h2 class="text-xl text-green-400 mb-2 font-bold">[ CTF TRAINING ENVIRONMENT ]</h2>
+            <h2 class="text-xl text-green-400 mb-2 font-bold">[ HARDCORE CTF ENVIRONMENT ]</h2>
             <p class="text-green-300 leading-relaxed">
-                Willkommen im anspruchsvollen Security-Lab. Hier wird echtes technisches Geschick verlangt. Analysiere die Missionen, beachte dynamische Timer (Credential- & PIN-Rotation) und nutze deine Fähigkeiten, um die Schutzwälle zu überwinden.
+                Keine simplen Klick-Buttons mehr. Hier musst du Angriffe manuell über das Terminal scripten, Tokens injizieren oder das virtuelle Smartphone physikalisch/logisch knacken. Nutze die Browser-Konsole (F12) und dein technisches Know-how.
             </p>
         </div>
 
@@ -57,25 +57,25 @@
                     <div class="text-xs text-green-500 mb-1">MISSION 01</div>
                     <h3 class="text-xl font-bold mb-3 text-green-300">Login-System & Bypass</h3>
                     <p class="text-sm text-green-400/80 mb-4">
-                        Überliste das Authentifizierungssystem. Ab mittlerer Stufe rotieren die Credentials im Minutentakt.
+                        Authentifizierungssystem mit rotierenden Credentials und aktiver WAF im Expertenmodus.
                     </p>
                 </div>
                 <button onclick="startMission(1)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm">
-                    Aufgabe Starten
+                    Mission Öffnen
                 </button>
             </div>
 
-            <!-- Mission 2: E-Commerce Shop -->
+            <!-- Mission 2: E-Commerce Shop & API -->
             <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
                 <div>
                     <div class="text-xs text-green-500 mb-1">MISSION 02</div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">E-Commerce / DDoS & Übernahme</h3>
+                    <h3 class="text-xl font-bold mb-3 text-green-300">E-Commerce API & DDoS</h3>
                     <p class="text-sm text-green-400/80 mb-4">
-                        Teste Lastspitzen, umgehe Anti-DDoS-Filter oder kapere die Admin-Session.
+                        Simuliere Traffic-Spitzen über das Angreifer-Terminal oder manipuliere Session-Cookies.
                     </p>
                 </div>
                 <button onclick="startMission(2)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm">
-                    Aufgabe Starten
+                    Mission Öffnen
                 </button>
             </div>
 
@@ -83,13 +83,13 @@
             <div class="terminal-bg p-6 rounded glow-box flex flex-col justify-between">
                 <div>
                     <div class="text-xs text-green-500 mb-1">MISSION 03</div>
-                    <h3 class="text-xl font-bold mb-3 text-green-300">Virtuelles Smartphone Lock</h3>
+                    <h3 class="text-xl font-bold mb-3 text-green-300">Virtuelles Smartphone</h3>
                     <p class="text-sm text-green-400/80 mb-4">
-                        Ein Smartphone mit zufälligem, alle 60 Sek. wechselndem Experten-PIN und strengem Rate-Limiting.
+                        Ein interaktives Smartphone-Interface mit Sperrbildschirm, PIN-Pad und Live-Benachrichtigungen.
                     </p>
                 </div>
                 <button onclick="startMission(3)" class="w-full bg-green-950/40 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition text-center uppercase tracking-wider text-sm">
-                    Aufgabe Starten
+                    Mission Öffnen
                 </button>
             </div>
 
@@ -98,12 +98,12 @@
 
     <!-- Footer -->
     <footer class="text-center text-xs text-green-600 mt-12 border-t border-green-900 pt-4">
-        SECURE LAB ENVIRONMENT // AUTHORIZED ACCESS ONLY
+        ADVANCED ETHICAL HACKING LAB // NO AUTO-SOLVERS
     </footer>
 
-    <!-- Modal für Schwierigkeitsgrad-Auswahl & Aufgaben -->
+    <!-- Modal -->
     <div id="mission-modal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center p-4 z-50">
-        <div id="modal-content" class="terminal-bg border border-green-500 p-6 rounded max-w-2xl w-full max-h-[90vh] overflow-y-auto glow-box">
+        <div id="modal-content" class="terminal-bg border border-green-500 p-6 rounded max-w-3xl w-full max-h-[90vh] overflow-y-auto glow-box">
             <!-- Dynamischer Inhalt -->
         </div>
     </div>
@@ -115,6 +115,7 @@
         let dynamicLoginCreds = { user: "admin", pass: "1234" };
         let dynamicSmartphonePin = "4829";
         let countdownTime = 60;
+        let enteredPinBuffer = "";
 
         function startMission(missionId) {
             currentMissionId = missionId;
@@ -122,10 +123,7 @@
             const content = document.getElementById('modal-content');
             modal.classList.remove('hidden');
 
-            let title = "";
-            if (missionId === 1) title = "Mission 01: Login-System";
-            if (missionId === 2) title = "Mission 02: E-Commerce & DDoS";
-            if (missionId === 3) title = "Mission 03: Virtuelles Smartphone";
+            let title = missionId === 1 ? "Mission 01: Login-System" : missionId === 2 ? "Mission 02: E-Commerce API & DDoS" : "Mission 03: Virtuelles Smartphone";
 
             content.innerHTML = `
                 <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
@@ -135,16 +133,16 @@
                 <p class="text-sm text-green-400 mb-6">Wähle den Schwierigkeitsgrad:</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <button onclick="loadDifficulty(${missionId}, 'easy')" class="p-4 border border-green-600 hover:bg-green-500 hover:text-black transition text-left">
-                        <div class="font-bold text-green-300">1. Keine Sicherheit</div>
-                        <div class="text-xs text-green-400/70 mt-1">Einfache Validierung (>3 Zeichen).</div>
+                        <div class="font-bold text-green-300">1. Einfach</div>
+                        <div class="text-xs text-green-400/70 mt-1">Grundlegende Validierung.</div>
                     </button>
                     <button onclick="loadDifficulty(${missionId}, 'medium')" class="p-4 border border-yellow-600 hover:bg-yellow-500 hover:text-black transition text-left">
-                        <div class="font-bold text-yellow-300">2. Mittel Sicherheit</div>
-                        <div class="text-xs text-yellow-400/70 mt-1">Dynamische Rotation alle 60 Sek.</div>
+                        <div class="font-bold text-yellow-300">2. Mittel</div>
+                        <div class="text-xs text-yellow-400/70 mt-1">60-Sekunden-Rotation aktiv.</div>
                     </button>
                     <button onclick="loadDifficulty(${missionId}, 'expert')" class="p-4 border border-red-600 hover:bg-red-500 hover:text-black transition text-left">
                         <div class="font-bold text-red-300">3. Experte</div>
-                        <div class="text-xs text-red-400/70 mt-1">Strenge Firewall & zufälliger PIN/Hash.</div>
+                        <div class="text-xs text-red-400/70 mt-1">WAF, Rate-Limiting & High-Security.</div>
                     </button>
                 </div>
             `;
@@ -159,12 +157,11 @@
             const content = document.getElementById('modal-content');
             if (globalTimerInterval) clearInterval(globalTimerInterval);
 
-            let diffTitle = diff === 'easy' ? 'Keine Sicherheit (Einfach)' : diff === 'medium' ? 'Mittlere Sicherheit' : 'Experte';
+            let diffTitle = diff === 'easy' ? 'Einfach' : diff === 'medium' ? 'Mittel' : 'Experte';
             let diffColor = diff === 'easy' ? 'text-green-400' : diff === 'medium' ? 'text-yellow-400' : 'text-red-400';
             let tips = "";
             let interactiveHtml = "";
 
-            // Timer für 60-Sekunden-Wechsel starten
             countdownTime = 60;
             generateFreshData(missionId);
             globalTimerInterval = setInterval(() => {
@@ -178,98 +175,75 @@
             }, 1000);
 
             if (missionId === 1) {
-                if (diff === 'easy') {
-                    tips = "Tipp: Einfaches Login. Benutzername und Passwort müssen jeweils länger als 3 Zeichen sein.";
-                    interactiveHtml = `
-                        <div class="space-y-3">
-                            <input type="text" id="m1-user" placeholder="Benutzername" class="w-full bg-black border border-green-500 p-2 text-green-300 text-sm outline-none">
-                            <input type="password" id="m1-pass" placeholder="Passwort" class="w-full bg-black border border-green-500 p-2 text-green-300 text-sm outline-none">
-                            <button onclick="checkMission1('easy')" class="w-full bg-green-950 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition font-bold">Einloggen</button>
-                        </div>
-                    `;
-                } else if (diff === 'medium') {
-                    tips = "Tipp: Credentials wechseln alle 60 Sekunden! Passe dich dem Timer an oder analysiere die Konsole.";
-                    interactiveHtml = `
-                        <div class="bg-yellow-950/20 border border-yellow-600 p-3 mb-4 text-xs text-yellow-300">
-                            [!] Credential-Rotation aktiv. Nächster Wechsel in <span id="global-timer" class="font-bold">60</span> Sek.
-                        </div>
-                        <div class="space-y-3">
-                            <input type="text" id="m1-user" placeholder="Benutzername" class="w-full bg-black border border-yellow-500 p-2 text-yellow-300 text-sm outline-none">
-                            <input type="password" id="m1-pass" placeholder="Passwort" class="w-full bg-black border border-yellow-500 p-2 text-yellow-300 text-sm outline-none">
-                            <button onclick="checkMission1('medium')" class="w-full bg-yellow-950 border border-yellow-500 py-2 hover:bg-yellow-500 hover:text-black transition font-bold">Einloggen</button>
-                        </div>
-                    `;
-                } else {
-                    tips = "Tipp: Strenge Firewall blockiert Standard-SQLi. Nutze fortgeschrittene Payloads oder Logik-Bypasses.";
-                    interactiveHtml = `
-                        <div class="bg-red-950/20 border border-red-600 p-3 mb-4 text-xs text-red-300">
-                            [!] WAF / Firewall aktiv. Credentials wechseln alle 60 Sek. (<span id="global-timer" class="font-bold">60</span>s).
-                        </div>
-                        <div class="space-y-3">
-                            <input type="text" id="m1-user" placeholder="Payload / Benutzername" class="w-full bg-black border border-red-500 p-2 text-red-300 text-sm outline-none">
-                            <input type="password" id="m1-pass" placeholder="Passwort" class="w-full bg-black border border-red-500 p-2 text-red-300 text-sm outline-none">
-                            <button onclick="checkMission1('expert')" class="w-full bg-red-950 border border-red-500 py-2 hover:bg-red-500 hover:text-black transition font-bold">Exploit Ausführen</button>
-                        </div>
-                    `;
-                }
+                tips = "Analysiere den Code oder fange die Credentials ab. Im Mittel/Experten-Modus rotieren sie alle 60s.";
+                interactiveHtml = `
+                    <div class="bg-black/40 border border-green-800 p-3 mb-4 text-xs text-green-400">
+                        [!] Rotation aktiv. Nächster Credential-Wechsel in <span id="global-timer" class="font-bold">60</span>s.
+                    </div>
+                    <div class="space-y-3">
+                        <input type="text" id="m1-user" placeholder="Benutzername / Payload" class="w-full bg-black border border-green-500 p-2 text-green-300 text-sm outline-none">
+                        <input type="password" id="m1-pass" placeholder="Passwort" class="w-full bg-black border border-green-500 p-2 text-green-300 text-sm outline-none">
+                        <button onclick="checkMission1('${diff}')" class="w-full bg-green-950 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition font-bold uppercase">Login Ausführen</button>
+                    </div>
+                `;
             } else if (missionId === 2) {
-                if (diff === 'easy') {
-                    tips = "Tipp: Simuliere Last durch wiederholtes Klicken (10 Requests), um den Server zu überlasten.";
-                    interactiveHtml = `
-                        <div class="space-y-3 text-center">
-                            <button onclick="checkMission2('easy')" class="w-full bg-green-950 border border-green-500 py-3 hover:bg-green-500 hover:text-black transition font-bold">DDoS Request senden</button>
-                            <div id="m2-status" class="text-xs text-green-400">Status: Server Online (0/10)</div>
+                tips = "Keine Klick-Buttons! Nutze das Terminal unten, um echte cURL-Befehle oder Last-Skripte (z.B. Loop) gegen die API zu feuern.";
+                interactiveHtml = `
+                    <div class="space-y-3">
+                        <div class="text-xs text-green-400 mb-1">Angreifer Terminal (Simuliert):</div>
+                        <div class="bg-black border border-green-700 p-3 rounded font-mono text-xs h-32 overflow-y-auto" id="terminal-output">
+                            root@pentest-box:~# API Target online. Type attack command...<br>
                         </div>
-                    `;
-                } else if (diff === 'medium') {
-                    tips = "Tipp: Anti-DDoS-Filter aktiv. Du musst schnell 20 Requests abfeuern, bevor der Filter greift.";
-                    interactiveHtml = `
-                        <div class="space-y-3 text-center">
-                            <button onclick="checkMission2('medium')" class="w-full bg-yellow-950 border border-yellow-500 py-3 hover:bg-yellow-500 hover:text-black transition font-bold">Burst-Flood auslösen</button>
-                            <div id="m2-status" class="text-xs text-yellow-400">Status: Warten auf Burst (0/20)</div>
+                        <div class="flex gap-2">
+                            <input type="text" id="m2-cmd" placeholder="z.B. curl -X POST /api/v1/flood --payload ..." class="w-full bg-black border border-green-500 p-2 text-green-300 text-xs outline-none font-mono">
+                            <button onclick="executeTerminalCommand('${diff}')" class="bg-green-950 border border-green-500 px-4 py-2 hover:bg-green-500 hover:text-black transition text-xs font-bold uppercase">RUN</button>
                         </div>
-                    `;
-                } else {
-                    tips = "Tipp: Um den Shop zu übernehmen, injiziere ein manipuliertes Admin-Cookie (`role=admin`).";
-                    interactiveHtml = `
-                        <div class="space-y-3">
-                            <input type="text" id="m2-cookie" placeholder="Cookie string (z.B. session=guest)" class="w-full bg-black border border-red-500 p-2 text-red-300 text-sm outline-none">
-                            <button onclick="checkMission2('expert')" class="w-full bg-red-950 border border-red-500 py-2 hover:bg-red-500 hover:text-black transition font-bold">Session Hijacking</button>
-                        </div>
-                    `;
-                }
+                    </div>
+                `;
             } else if (missionId === 3) {
-                if (diff === 'easy') {
-                    tips = "Tipp: Ein fester 4-stelliger PIN (z.B. 1234 oder 0000).";
-                    interactiveHtml = `
-                        <div class="space-y-3">
-                            <input type="password" id="m3-pin" maxlength="4" placeholder="4-stelliger PIN" class="w-full bg-black border border-green-500 p-2 text-green-300 text-sm text-center tracking-widest text-lg outline-none">
-                            <button onclick="checkMission3('easy')" class="w-full bg-green-950 border border-green-500 py-2 hover:bg-green-500 hover:text-black transition font-bold">PIN Entsperren</button>
+                tips = "Interaktives Smartphone. Der PIN ändert sich im Mittel/Experten-Modus alle 60 Sek. Versuche den Code zu erraten oder per Script einzuspielen.";
+                enteredPinBuffer = "";
+                interactiveHtml = `
+                    <div class="flex justify-center mb-6">
+                        <!-- Echter Smartphone-Rahmen -->
+                        <div class="w-64 bg-zinc-900 border-4 border-zinc-700 rounded-3xl p-4 shadow-2xl relative">
+                            <!-- Notch & Kamera -->
+                            <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-4 bg-black rounded-b-xl flex justify-center items-center">
+                                <div class="w-2 h-2 bg-zinc-800 rounded-full"></div>
+                            </div>
+                            
+                            <!-- Smartphone Statusleiste -->
+                            <div class="flex justify-between items-center text-[10px] text-zinc-400 mt-3 mb-2 px-1">
+                                <span>19:42</span>
+                                <span id="global-timer" class="text-red-400 font-bold">60s</span>
+                                <span>🔋 89%</span>
+                            </div>
+
+                            <!-- Screen Display -->
+                            <div class="bg-black/90 border border-zinc-800 rounded-xl p-4 text-center mb-4">
+                                <div class="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Gesperrt</div>
+                                <div id="phone-display-dots" class="text-xl text-green-400 tracking-widest my-2">____</div>
+                                <div id="phone-status-msg" class="text-[10px] text-red-400 h-4">PIN eingeben</div>
+                            </div>
+
+                            <!-- Keypad -->
+                            <div class="grid grid-cols-3 gap-2 px-2">
+                                <button onclick="pressPhoneKey('1')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">1</button>
+                                <button onclick="pressPhoneKey('2')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">2</button>
+                                <button onclick="pressPhoneKey('3')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">3</button>
+                                <button onclick="pressPhoneKey('4')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">4</button>
+                                <button onclick="pressPhoneKey('5')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">5</button>
+                                <button onclick="pressPhoneKey('6')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">6</button>
+                                <button onclick="pressPhoneKey('7')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">7</button>
+                                <button onclick="pressPhoneKey('8')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">8</button>
+                                <button onclick="pressPhoneKey('9')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">9</button>
+                                <button onclick="pressPhoneKey('C')" class="bg-red-950/60 hover:bg-red-900 text-red-300 p-3 rounded-full text-xs font-bold flex items-center justify-center">C</button>
+                                <button onclick="pressPhoneKey('0')" class="bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full text-sm font-bold">0</button>
+                                <button onclick="pressPhoneKey('OK')" class="bg-green-950/60 hover:bg-green-900 text-green-300 p-3 rounded-full text-xs font-bold flex items-center justify-center">OK</button>
+                            </div>
                         </div>
-                    `;
-                } else if (diff === 'medium') {
-                    tips = "Tipp: Der PIN ändert sich alle 60 Sekunden zufällig! Nutze einen schnellen Brute-Force-Versuch.";
-                    interactiveHtml = `
-                        <div class="bg-yellow-950/20 border border-yellow-600 p-3 mb-4 text-xs text-yellow-300">
-                            [!] PIN rotiert! Neuer Code in <span id="global-timer" class="font-bold">60</span> Sek.
-                        </div>
-                        <div class="space-y-3">
-                            <input type="password" id="m3-pin" maxlength="4" placeholder="Dynamischer PIN" class="w-full bg-black border border-yellow-500 p-2 text-yellow-300 text-sm text-center tracking-widest text-lg outline-none">
-                            <button onclick="checkMission3('medium')" class="w-full bg-yellow-950 border border-yellow-500 py-2 hover:bg-yellow-500 hover:text-black transition font-bold">Brute-Force PIN</button>
-                        </div>
-                    `;
-                } else {
-                    tips = "Tipp: Experten-Modus! Der PIN wird absolut zufällig generiert und wechselt alle 60 Sekunden (<span id='global-timer' class='font-bold'>60</span>s). Zudem greift ein Rate-Limiter.";
-                    interactiveHtml = `
-                        <div class="bg-red-950/20 border border-red-600 p-3 mb-4 text-xs text-red-300">
-                            [!] FIREWALL AKTIV: Zufälliger 4-Stelliger PIN wechselt alle 60 Sek. (<span id="global-timer" class="font-bold">60</span>s).
-                        </div>
-                        <div class="space-y-3">
-                            <input type="password" id="m3-pin" maxlength="4" placeholder="Zufälliger Experte-PIN" class="w-full bg-black border border-red-500 p-2 text-red-300 text-sm text-center tracking-widest text-lg outline-none">
-                            <button onclick="checkMission3('expert')" class="w-full bg-red-950 border border-red-500 py-2 hover:bg-red-500 hover:text-black transition font-bold">Experte Bypass Testen</button>
-                        </div>
-                    `;
-                }
+                    </div>
+                `;
             }
 
             content.innerHTML = `
@@ -281,7 +255,7 @@
                     <button onclick="startMission(${missionId})" class="text-green-500 hover:text-white text-xs">[Zurück]</button>
                 </div>
                 <div class="bg-black/50 border border-green-800 p-3 rounded mb-4 text-xs text-green-400">
-                    <span class="font-bold text-green-300">PROFI-TIPP:</span> ${tips}
+                    <span class="font-bold text-green-300">INFO:</span> ${tips}
                 </div>
                 ${interactiveHtml}
             `;
@@ -297,10 +271,8 @@
             };
             
             dynamicSmartphonePin = randomPinNum.toString();
-            console.log(`[SYS-UPDATE] Neue Live-Daten generiert -> Login: ${dynamicLoginCreds.user} / ${dynamicLoginCreds.pass} | Smartphone PIN: ${dynamicSmartphonePin}`);
+            console.log(`[SEC-DEBUG] Live Credentials -> User: ${dynamicLoginCreds.user} / Pass: ${dynamicLoginCreds.pass} | Smartphone PIN: ${dynamicSmartphonePin}`);
         }
-
-        let clickCounter = 0;
 
         function checkMission1(diff) {
             const u = document.getElementById('m1-user').value;
@@ -308,65 +280,91 @@
 
             if (diff === 'easy') {
                 if (u.length > 3 && p.length > 3) {
-                    showSuccessScreen("Mission 01: Login", "Einfach (Keine Sicherheit)");
+                    showSuccessScreen("Mission 01: Login", "Einfach");
                 } else {
-                    alert("Zugriff verweigert: Benutzername und Passwort müssen >3 Zeichen sein.");
+                    alert("Zugriff verweigert: Felder müssen >3 Zeichen sein.");
                 }
             } else if (diff === 'medium') {
                 if (u === dynamicLoginCreds.user && p === dynamicLoginCreds.pass) {
-                    showSuccessScreen("Mission 01: Login", "Mittel (Rotation überwunden)");
+                    showSuccessScreen("Mission 01: Login", "Mittel (Rotation geknackt)");
                 } else {
-                    alert("Zugriff verweigert: Falsche Credentials! Achte auf den 60-Sekunden-Timer.");
+                    alert("Zugriff verweigert: Credentials falsch oder abgelaufen!");
                 }
             } else {
                 if ((u === dynamicLoginCreds.user && p === dynamicLoginCreds.pass) || u.includes("' OR 1=1")) {
-                    showSuccessScreen("Mission 01: Login", "Experte (WAF & Rotation Bypass)");
+                    showSuccessScreen("Mission 01: Login", "Experte (WAF & Auth Bypass)");
                 } else {
-                    alert("Firewall blockiert! Payload oder Credentials ungültig.");
+                    alert("WAF Blocked: Unzulässiger Versuch.");
                 }
             }
         }
 
-        function checkMission2(diff) {
-            if (diff === 'easy') {
-                clickCounter++;
-                document.getElementById('m2-status').innerText = `Status: Überlastung... (${clickCounter}/10)`;
-                if (clickCounter >= 10) {
-                    clickCounter = 0;
-                    showSuccessScreen("Mission 02: E-Commerce DDoS", "Einfach");
+        function executeTerminalCommand(diff) {
+            const cmdInput = document.getElementById('m2-cmd');
+            const terminalOut = document.getElementById('terminal-output');
+            const cmd = cmdInput.value.trim();
+            
+            terminalOut.innerHTML += `<br>root@pentest-box:~# ${cmd}`;
+            cmdInput.value = "";
+
+            setTimeout(() => {
+                if (diff === 'easy') {
+                    if (cmd.includes("ddos") || cmd.includes("flood") || cmd.includes("ab") || cmd.includes("hey")) {
+                        terminalOut.innerHTML += `<br><span class="text-green-400">[+] API-Server überlastet! Schutzwall kollabiert.</span>`;
+                        showSuccessScreen("Mission 02: API DDoS", "Einfach");
+                    } else {
+                        terminalOut.innerHTML += `<br><span class="text-red-400">[-] Unbekannter Befehl. Nutze z.B. 'flood' oder 'ddos'.</span>`;
+                    }
+                } else if (diff === 'medium') {
+                    if (cmd.includes("rate-limit") || cmd.includes("burst") || cmd.includes("proxy-rotation")) {
+                        terminalOut.innerHTML += `<br><span class="text-yellow-400">[+] Rate-Limiter umgangen. Traffic-Spitze erfolgreich!</span>`;
+                        showSuccessScreen("Mission 02: API DDoS", "Mittel");
+                    } else {
+                        terminalOut.innerHTML += `<br><span class="text-red-400">[-] Anti-DDoS Firewall blockiert den Request (429 Too Many Requests).</span>`;
+                    }
+                } else {
+                    if (cmd.includes("role=admin") || cmd.includes("cookie-injection") || cmd.includes("jwt-forgery")) {
+                        terminalOut.innerHTML += `<br><span class="text-red-500">[+] Admin-Token erfolgreich gefälscht. System übernommen!</span>`;
+                        showSuccessScreen("Mission 02: E-Commerce Shop", "Experte (Session Hijacking)");
+                    } else {
+                        terminalOut.innerHTML += `<br><span class="text-red-400">[-] Signatur ungültig. Authentifizierung fehlgeschlagen.</span>`;
+                    }
                 }
-            } else if (diff === 'medium') {
-                clickCounter++;
-                document.getElementById('m2-status').innerText = `Status: Burst... (${clickCounter}/20)`;
-                if (clickCounter >= 20) {
-                    clickCounter = 0;
-                    showSuccessScreen("Mission 02: E-Commerce DDoS", "Mittel");
+                terminalOut.scrollTop = terminalOut.scrollHeight;
+            }, 400);
+        }
+
+        function pressPhoneKey(key) {
+            const statusMsg = document.getElementById('phone-status-msg');
+            const dots = document.getElementById('phone-display-dots');
+
+            if (key === 'C') {
+                enteredPinBuffer = "";
+                statusMsg.innerText = "PIN zurückgesetzt";
+            } else if (key === 'OK') {
+                if (enteredPinBuffer === dynamicSmartphonePin || enteredPinBuffer === "1234") {
+                    statusMsg.className = "text-[10px] text-green-400 h-4 font-bold";
+                    statusMsg.innerText = "ENTSPERRT!";
+                    setTimeout(() => {
+                        showSuccessScreen("Mission 03: Smartphone", "Geknackt");
+                    }, 600);
+                } else {
+                    statusMsg.className = "text-[10px] text-red-400 h-4";
+                    statusMsg.innerText = "Falscher PIN!";
+                    enteredPinBuffer = "";
                 }
             } else {
-                const cookie = document.getElementById('m2-cookie').value;
-                if (cookie.includes("role=admin") || cookie.includes("admin=true")) {
-                    showSuccessScreen("Mission 02: E-Commerce Shop", "Experte (Session Hijacked)");
-                } else {
-                    alert("Ungültiges Cookie. Erforderlich: role=admin");
+                if (enteredPinBuffer.length < 4) {
+                    enteredPinBuffer += key;
+                    statusMsg.innerText = "PIN eingeben";
                 }
             }
-        }
 
-        function checkMission3(diff) {
-            const pin = document.getElementById('m3-pin').value;
-            if (diff === 'easy') {
-                if (pin === "1234" || pin.length === 4) {
-                    showSuccessScreen("Mission 03: Smartphone", "Einfach");
-                } else {
-                    alert("Falscher PIN.");
-                }
-            } else if (diff === 'medium' || diff === 'expert') {
-                if (pin === dynamicSmartphonePin) {
-                    showSuccessScreen("Mission 03: Smartphone", diff === 'medium' ? "Mittel" : "Experte (Zufälliger PIN geknackt)");
-                } else {
-                    alert("Falscher PIN! Der rotierende PIN hat sich eventuell geändert oder ist falsch.");
-                }
+            let displayStr = "";
+            for (let i = 0; i < 4; i++) {
+                displayStr += i < enteredPinBuffer.length ? "*" : "_";
             }
+            dots.innerText = displayStr;
         }
 
         function showSuccessScreen(missionName, levelName) {
@@ -376,10 +374,10 @@
             modalContent.innerHTML = `
                 <div class="text-center space-y-4">
                     <h2 class="text-2xl font-bold text-green-400 glow-text">[ SUCCESS ]</h2>
-                    <p class="text-lg text-green-300 font-bold">Erfolgreiche Aufgabe abgeschlossen!</p>
+                    <p class="text-lg text-green-300 font-bold">Angriff erfolgreich durchgeführt!</p>
                     <div class="border border-green-500 p-2 bg-black text-sm text-green-400 inline-block">
                         Mission: ${missionName} <br>
-                        Level im Hacker-Style: <span class="text-yellow-400 uppercase font-bold">${levelName}</span>
+                        Schwierigkeit: <span class="text-yellow-400 uppercase font-bold">${levelName}</span>
                     </div>
                     <div class="my-6">
                         <canvas id="successChart" width="400" height="150" class="mx-auto"></canvas>
@@ -395,10 +393,10 @@
                 new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ['Init', 'Scan', 'Payload', 'Bypass', 'Root'],
+                        labels: ['Recon', 'Exploit', 'Bypass', 'Root'],
                         datasets: [{
-                            label: 'Hacker Skill Index',
-                            data: [15, 40, 65, 85, 100],
+                            label: 'Cyber Skill Rating',
+                            data: [20, 50, 80, 100],
                             borderColor: '#00ff66',
                             backgroundColor: 'rgba(0, 255, 102, 0.1)',
                             borderWidth: 2,
